@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Status - Starry ✨</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            50: '#121212',
+                            100: '#1E1E1E',
+                            200: '#2A2A2A',
+                            300: '#383838',
+                            400: '#4D4D4D',
+                            500: '#666666',
+                            600: '#808080',
+                            700: '#999999',
+                        },
+                        brand: {
+                            50: '#e6f2ff',
+                            100: '#3b82f6',
+                            200: '#2563eb',
+                            300: '#1d4ed8',
+                        },
+                        custom: {
+                            blue: '#82a7fb',
+                            accent: '#6366f1'
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(130, 167, 251, 0.3)',
+                        'card': '0 10px 25px rgba(0, 0, 0, 0.2)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar blur effect */
+        .navbar-blur {
+            backdrop-filter: blur(15px) saturate(180%);
+            background-color: rgba(30, 30, 30, 0.85);
+        }
+    </style>
+</head>
+
+<body class="text-white bg-dark-50">
+    <!-- Navbar -->
+    <nav class="navbar-blur sticky top-0 z-50 px-4 lg:px-6 py-4 border-b border-dark-300">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Brand -->
+            <div class="flex items-center space-x-4  p-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="../icon.png" alt="Starry Logo" class="w-10 h-10 rounded-full shadow-md">
+                <div>
+                <span class="text-xl font-bold text-custom-blue tracking-wider">Starry</span>
+                <p class="text-xs text-gray-200">luau.tech</p>
+                </div>
+                <div class="ml-auto">
+                <span class="bg-white bg-opacity-20 text-white text-xs px-2 py-1 rounded-full">V.1.1</span>
+                </div>
+                </div>
+            <!-- Hamburger Button (for small screens) -->
+            <button id="hamburger" class="lg:hidden text-gray-300 hover:text-custom-blue focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Navigation Links -->
+            <div id="navMenu" class="hidden lg:flex space-x-6 items-center">
+                <a  href="/" id="homeNavBar" class="text-gray-300 hover:text-custom-blue transition-colors flex items-center cursor-pointer">
+                    <i data-lucide="house" class="w-5 h-5 mr-2"></i>Home
+                </a>
+                <a href="/starry/redirect?url=https://luau.tech/d" class="text-gray-300 hover:text-custom-blue transition-colors flex items-center">
+                    <i data-lucide="users" class="w-5 h-5 mr-2"></i>Community
+                </a>
+            </div>
+        </div>
+    
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden flex flex-col space-y-4 px-6 py-4 bg-transparent border-t border-dark-300">
+            <a  href="/" id="mobileHomeNavBar" class="text-gray-300 hover:text-custom-blue transition-colors flex items-center cursor-pointer">
+                <i data-lucide="house" class="w-5 h-5 mr-2"></i>Home
+            </a>
+            <a href="/starry/redirect?url=https://luau.tech/d" class="text-gray-300 hover:text-custom-blue transition-colors flex items-center">
+                <i data-lucide="users" class="w-5 h-5 mr-2"></i>Community
+            </a>
+        </div>
+    </nav>
+
+    <div class="section-divider"></div>
+   
+    <section>
+        <div>
+            <iframe 
+            src="https://starry.betteruptime.com/" 
+            width="100%" 
+            height="100%" 
+            style="position: fixed; top: 100px; left: 0; bottom: 0; right: 0; width: 100%; height: calc(100% - 64px); border: none; margin: 0; padding: 0; overflow: hidden;">
+            </iframe>
+        </div>
+    </section>
+        <script>
+             lucide.createIcons();
+
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+            });
+            
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Starry - Tower of Hell Features</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            50: '#121212',
+                            100: '#1E1E1E',
+                            200: '#2A2A2A',
+                            300: '#383838',
+                            400: '#4D4D4D',
+                            500: '#666666',
+                            600: '#808080',
+                            700: '#999999',
+                        },
+                        brand: {
+                            50: '#e6f2ff',
+                            100: '#3b82f6',
+                            200: '#2563eb',
+                            300: '#1d4ed8',
+                        },
+                        custom: {
+                            blue: '#82a7fb',
+                            accent: '#6366f1'
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(130, 167, 251, 0.3)',
+                        'card': '0 10px 25px rgba(0, 0, 0, 0.2)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212;
+            scroll-behavior: smooth;
+        }
+
+        /* Enhanced feature card hover effect */
+        .feature-card {
+            transition: all 0.4s ease;
+            will-change: transform, box-shadow;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Improved button hover effect - Subtle Dimming */
+        .btn-primary,
+        .btn-secondary {
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            opacity: 0.85;
+            box-shadow: 0 10px 20px rgba(130, 167, 251, 0.2);
+        }
+
+        /* Improved banner gradient */
+        .toh-banner {
+            position: relative;
+            background-image:
+                linear-gradient(to bottom right, rgba(130, 167, 251, 0.1), rgba(130, 167, 251, 0.05)),
+                url('../../game/images/toh_banner.webp');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .toh-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom,
+                    rgba(18, 18, 18, 0) 0%,
+                    rgba(18, 18, 18, 0.7) 70%,
+                    rgba(18, 18, 18, 1) 100%);
+        }
+
+
+
+        /* Blurred navbar */
+        .navbar-blur {
+            backdrop-filter: blur(15px) saturate(180%);
+            background-color: rgba(30, 30, 30, 0.85);
+        }
+    </style>
+</head>
+
+<body class="text-white bg-dark-50">
+    <!-- Enhanced Navbar -->
+     
+    <nav class="navbar-blur sticky top-0 z-50 px-4 lg:px-6 py-1 border-b border-dark-300">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="../../icon.png" alt="Starry Logo" class="w-10 h-10 rounded-full shadow-md">
+                <span class="text-xl font-bold text-custom-blue tracking-wider">Starry</span>
+            </div>
+            <div class="flex space-x-6 items-center">
+                <a href="../../index.html"
+                    class="text-gray-300 hover:text-custom-blue transition-colors flex items-center">
+                    <i data-lucide="home" class="w-5 h-5 mr-2"></i>Home
+                </a>
+                <a href="/d" class="text-gray-300 hover:text-custom-blue transition-colors flex items-center">
+                    <i data-lucide="users" class="w-5 h-5 mr-2"></i>Community
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative">
+        <div class="toh-banner min-h-[500px] flex items-center">
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <h1 class="text-6xl font-bold mb-6 text-red-400 drop-shadow-lg">Tower of Hell</h1>
+                <p class="text-xl text-gray-200 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Advanced movement and bypass script designed to revolutionize your gaming experience with powerful,
+                    undetectable features.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#features" class=" px-8 py-3 bg-red-500 text-dark-50 rounded-lg 
+                        hover:bg-red-500/90 transition-colors 
+                        font-semibold shadow-glow">
+                        Explore Features
+                    </a>
+                    <a href="#" class=" px-8 py-3 border-2 border-red-400 text-red-400
+                        rounded-lg hover:bg-red-500/10 transition-colors
+                        font-semibold">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Features Section -->
+
+    <section id="features" class="bg-dark-50 py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-custom-blue 
+            animate-fade-in-up">Powerful Script Features</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Feature Cards with More Detail -->
+                <div class="feature-card bg-dark-100 rounded-2xl p-7 border border-dark-300 
+                shadow-card hover:border-custom-blue/50 transition-all group
+                relative overflow-hidden">
+                    <!-- Subtle Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-transparent to-custom-blue/10 
+                    opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                    <div class="relative z-10">
+                        <div class="bg-custom-blue/10 rounded-full w-14 h-14 flex items-center justify-center mb-5
+                        group-hover:bg-custom-blue/20 transition-colors">
+                            <i data-lucide="shield" class="w-7 h-7 text-custom-blue"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3 text-custom-blue 
+                        group-hover:text-opacity-90 transition-colors">God Mode</h3>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Become invincible and survive any level without taking damage.
+                        </p>
+                        <div class="flex items-center text-sm text-yellow-400">
+                            <i data-lucide="zap" class="w-4 h-4 mr-2"></i>Premium Feature</div>
+                    </div>
+                    
+                </div>
+                <div class="feature-card bg-dark-100 rounded-2xl p-7 border border-dark-300 
+                shadow-card hover:border-custom-blue/50 transition-all group
+                relative overflow-hidden">
+                    <!-- Subtle Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-transparent to-custom-blue/10 
+                    opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                    <div class="relative z-10">
+                        <div class="bg-custom-blue/10 rounded-full w-14 h-14 flex items-center justify-center mb-5
+                        group-hover:bg-custom-blue/20 transition-colors">
+                            <i data-lucide="shield" class="w-7 h-7 text-custom-blue"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3 text-custom-blue 
+                        group-hover:text-opacity-90 transition-colors">God Mode</h3>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Become invincible and survive any level without taking damage.
+                        </p>
+                        <div class="flex items-center text-sm text-yellow-400">
+                            <i data-lucide="zap" class="w-4 h-4 mr-2"></i>Premium Feature</div>
+                    </div>
+
+
+
+                <!-- Repeat for other features with similar structure -->
+
+            </div>
+            <div class="feature-card bg-dark-100 rounded-2xl p-7 border border-dark-300 
+            shadow-card hover:border-custom-blue/50 transition-all group
+            relative overflow-hidden">
+                <!-- Subtle Gradient Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-br from-transparent to-custom-blue/10 
+                opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                <div class="relative z-10">
+                    <div class="bg-custom-blue/10 rounded-full w-14 h-14 flex items-center justify-center mb-5
+                    group-hover:bg-custom-blue/20 transition-colors">
+                        <i data-lucide="shield" class="w-7 h-7 text-custom-blue"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-custom-blue 
+                    group-hover:text-opacity-90 transition-colors">God Mode</h3>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        Become invincible and survive any level without taking damage.
+                    </p>
+                    <div class="flex items-center text-sm text-yellow-400">
+                        <i data-lucide="zap" class="w-4 h-4 mr-2"></i>Premium Feature</div>
+                </div>
+
+        </div>
+
+    </section>
+
+
+
+    <footer class="bg-gradient-to-r from-gray-900 to-gray-800 py-12 border-t border-gray-700">
+        <div class="container mx-auto px-4 lg:px-6 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+
+                <div class="flex flex-col items-center md:items-start space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <img src="../../icon.png" alt="Starry Logo" class="w-12 h-12 rounded-xl shadow-lg">
+                        <span class="text-2xl font-black text-white tracking-tight">Starry</span>
+                    </div>
+                    <p class="text-gray-400 text-sm text-center md:text-left"></p>
+                </div>
+
+                <div class="flex justify-center space-x-6">
+                    <div class="flex flex-col space-y-2">
+                        <h4 class="text-white font-semibold mb-2">Quick Links</h4>
+                        <a href="/starry/terms-of-service"
+                            class="text-gray-300 hover:text-white transition-colors text-sm">Terms of Service</a>
+                        <a href="/starry/terms-of-service/#Privacy-Policy"
+                            class="text-gray-300 hover:text-white transition-colors text-sm">Privacy Policy</a>
+                        <a href="/starry/r?url=https://luau.tech/d"
+                            class="text-gray-300 hover:text-white transition-colors text-sm">Contact Us</a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center md:items-end space-y-3">
+                    <div class="flex space-x-4">
+                        <a href="/starry/r?url=https://luau.tech/d" target="_blank" rel="noopener noreferrer"
+                            class="text-white hover:text-gray-300 transition-colors duration-300 ease-in-out"
+                            aria-label="Visit Discord Website">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-8 h-8 hover:scale-110 transform transition-transform duration-300">
+                                <path
+                                    d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0787.0371c-.211.3765-.4447.8651-.6083 1.2493-1.8558-.2784-3.7098-.2784-5.5234 0-.1636-.3842-.4029-.8728-.6171-1.2493a.077.077 0 00-.0787-.0371 19.7161 19.7161 0 00-4.8851 1.5152.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8734-1.2952 1.2305-1.9967a.076.076 0 00-.0416-.1062c-.6528-.2476-1.2743-.5495-1.8722-.8905a.077.077 0 01-.0076-.1276c.1258-.0941.2516-.1926.3714-.2914a.0743.0743 0 01.0784-.0105c3.9262 1.7909 8.1766 1.7909 12.0551 0a.0739.0739 0 01.0788.0105c.1198.0988.246.1973.3718.2914a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.8728.8905.0762.0762 0 00-.0407.1062c.3611.7015.7729 1.3663 1.2309 1.9967a.0761.0761 0 00.0842.0276c1.9581-.6066 3.9466-1.5218 6.0006-3.0294a.0761.0761 0 00.0313-.0561c.4848-5.1766-.8104-9.6616-3.4211-13.6674a.0608.0608 0 00-.0314-.0277zM8.02 15.3312c-1.1412 0-2.0782-1.0487-2.0782-2.3415 0-1.2929.9223-2.3415 2.0782-2.3415 1.1676 0 2.0999 1.0486 2.0781 2.3415 0 1.2928-.9105 2.3415-2.0781 2.3415zm7.9373 0c-1.1412 0-2.0782-1.0487-2.0782-2.3415 0-1.2929.9223-2.3415 2.0782-2.3415 1.1676 0 2.0999 1.0486 2.0781 2.3415 0 1.2928-.9105 2.3415-2.0781 2.3415z" />
+                            </svg>
+                        </a>
+                        <a href="https://rscripts.net/@starry" target="_blank" rel="noopener noreferrer"
+                            class="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out"
+                            aria-label="Visit RScripts Profile">
+                            <img src="../../rscripts-logo-rawpng.png" alt="RScripts"
+                                class="w-7 h-7 hover:scale-110 transform transition-transform duration-300" />
+                        </a>
+                    </div>
+                    <div class="text-gray-400 text-sm">
+                        © 2024 Starry Project. All Rights Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

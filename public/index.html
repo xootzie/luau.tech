@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Starry ✨</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            50: '#121212',
+                            100: '#1E1E1E',
+                            200: '#2A2A2A',
+                            300: '#383838',
+                            400: '#4D4D4D',
+                            500: '#666666',
+                            600: '#808080',
+                            700: '#999999',
+                        },
+                        brand: {
+                            50: '#e6f2ff',
+                            100: '#3b82f6',
+                            200: '#2563eb',
+                            300: '#1d4ed8',
+                        },
+                        custom: {
+                            blue: '#82a7fb',
+                            accent: '#6366f1'
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(130, 167, 251, 0.3)',
+                        'card': '0 10px 25px rgba(0, 0, 0, 0.2)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212;
+            scroll-behavior: smooth;
+            max-width: 100%;
+        }
+        .navbar-blur {
+            backdrop-filter: blur(15px) saturate(180%);
+            background-color: rgba(30, 30, 30, 0.85);
+        }
+        .card {
+
+            transition: all 0.4s ease;
+            will-change: transform, box-shadow;
+            position: relative;
+            z-index: 1;
+            transform-origin: center bottom;
+
+        }
+        .card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        .card img {
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg,
+                    rgba(130, 167, 251, 0.1) 0%,
+                    rgba(130, 167, 251, 0.05) 100%);
+        }
+
+        @keyframes bounce {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .scroll-bounce {
+            animation: bounce 1.5s infinite;
+        }
+        .section-divider {
+            position: relative;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        }
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(130, 167, 251, 0.3), transparent);
+        }
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+
+<body class="text-white bg-dark-50">
+    <div id="customContextMenu"
+        class="hidden absolute bg-black bg-opacity-50 border border-dark-300 rounded-lg shadow-lg w-48 py-2 z-[9999] backdrop-filter backdrop-blur-md">
+        <ul>
+            <li id="copyOption"
+                class="px-4 py-2 text-gray-300 hover:bg-dark-200 cursor-pointer flex items-center space-x-2">
+                <span data-lucide="copy" id="copyIcon"></span>
+                <span>Copy</span>
+            </li>
+            <li id="refreshOption"
+                class="px-4 py-2 text-gray-300 hover:bg-dark-200 cursor-pointer flex items-center space-x-2">
+                <span data-lucide="rotate-cw" id="refreshIcon"></span>
+                <span>Refresh</span>
+            </li>
+            <li id="discordOption"
+                class="px-4 py-2 text-gray-300 hover:bg-dark-200 cursor-pointer flex items-center space-x-2">
+                <span data-lucide="users" id="discordIcon"></span>
+                <span>Discord Server</span>
+            </li>
+        </ul>
+    </div>
+
+    <div id="scriptModal" class="fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop">
+        <div class="bg-dark-100 rounded-2xl p-8 w-full max-w-md mx-4 relative border border-dark-300 shadow-card">
+            <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h2 class="text-2xl font-bold mb-4 text-custom-blue">Get Started</h2>
+            <div class="bg-dark-200 rounded-lg p-4 mb-6">
+                <pre class="text-sm text-gray-300 overflow-x-auto"><code>getgenv().ignoreGameCheck = false
+loadstring(game:HttpGet("https://starry.luau.tech/"))</code></pre>
+            </div>
+            <div class="flex space-x-4">
+                <button id="copyScript" class="flex-1 px-6 py-3 bg-custom-blue text-dark-50 
+                    rounded-lg hover:bg-custom-blue/90 transition-colors 
+                    text-center font-semibold flex items-center justify-center">
+                    <i data-lucide="copy" class="w-5 h-5 mr-2"></i>
+                    Copy Script
+                </button>
+                <button id="dismissModal" class="flex-1 px-6 py-3 border-2 border-dark-400 
+                    text-gray-300 rounded-lg hover:bg-dark-300 transition-colors 
+                    text-center font-semibold">
+                    Dismiss
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar-blur sticky top-0 z-50 px-4 lg:px-6 py-1 border-b border-dark-300">
+        <div class="container mx-auto flex justify-between items-center">
+            <div
+                class="flex items-center space-x-4  p-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="icon.png" alt="Starry Logo" class="w-10 h-10 rounded-full shadow-md">
+                <div>
+                    <span class="text-xl font-bold text-custom-blue tracking-wider">Starry</span>
+                    <p class="text-xs text-gray-200">luau.tech</p>
+                </div>
+                <div class="ml-auto">
+                    <span class="bg-white bg-opacity-20 text-white text-xs px-2 py-1 rounded-full">V.1.1</span>
+                </div>
+            </div>
+            <!-- Hamburger Button (for small screens) -->
+            <button id="hamburger" class="lg:hidden text-gray-300 hover:text-custom-blue focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Navigation Links -->
+            <div id="navMenu" class="hidden lg:flex space-x-6 items-center">
+                <a id="gameNavBar"
+                    class="text-gray-300 hover:text-custom-blue transition-colors flex items-center cursor-pointer">
+                    <i data-lucide="layout-grid" class="w-5 h-5 mr-2"></i>Games
+                </a>
+                <a href="https://luau.tech/d"
+                    class="text-gray-300 hover:text-custom-blue transition-colors flex items-center">
+                    <i data-lucide="users" class="w-5 h-5 mr-2"></i>Community
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu"
+            class="hidden lg:hidden flex flex-col space-y-4 px-6 py-4 bg-transparent border-t border-dark-300">
+            <a id="mobileGameNavBar"
+                class="text-gray-300 hover:text-custom-blue transition-colors flex items-center cursor-pointer">
+                <i data-lucide="layout-grid" class="w-5 h-5 mr-2"></i>Games
+            </a>
+            <a href="https://luau.tech/d"
+                class="text-gray-300 hover:text-custom-blue transition-colors flex items-center">
+                <i data-lucide="users" class="w-5 h-5 mr-2"></i>Community
+            </a>
+        </div>
+    </nav>
+
+    <section
+        class="relative hero-gradient min-h-[87vh] flex flex-col justify-center items-center text-center px-4 py-8">
+        <div class="container mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+                Elevate Your <span class="text-custom-blue">Roblox</span> Gameplay
+            </h1>
+            <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-10 leading-relaxed">
+                The most powerful and feature-packed script collection, completely free. Unlock unlimited potential
+                across multiple games.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="px-10 py-4 bg-custom-blue text-dark-50 rounded-xl
+                    hover:bg-custom-blue/90 transition-colors
+                    font-bold text-lg shadow-glow
+                    flex items-center justify-center">
+                    Get Started
+                </a>
+                <a href="https://luau.tech/d" class="px-10 py-4 border-2 border-custom-blue text-custom-blue
+                rounded-xl hover:bg-custom-blue/10 transition-colors
+                font-bold text-lg flex items-center justify-center">
+                <i data-lucide="message-circle" class="w-6 h-6 mr-3"></i>
+                Join Community
+            </a>
+            </div>
+        </div>
+
+        <div id="scrollDownIndicator" class="absolute bottom-10 scroll-down scroll-bounce cursor-pointer">
+            <div class="flex justify-center items-center text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+                <span class="ml-2">Scroll Down</span>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="section-divider"></div>
+
+    <div class="section-divider"></div>
+    <section id="supported-games" class="py-20 bg-dark-50">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="relative" data-carousel="true">
+                <div
+                    class="px-5 relative z-30 flex flex-col gap-4 md:flex-row md:justify-between mx-auto xl:max-w-[1126px]">
+                    <h2 class="text-custom-blue font-bold text-[28px] md:text-[40px]">
+                        Supported Games
+                    </h2>
+
+                    <div class="flex items-center">
+                        <div class="flex items-center">
+                            <button class="carousel-prev mr-2 shrink-0 flex justify-center items-center rounded-full border transition 
+                            w-[32px] md:w-[38px] h-[32px] md:h-[38px] 
+                            border-[#939DB8]/20 bg-dark-200 
+                            disabled:opacity-40 hover:bg-dark-300">
+                                <i data-lucide="chevron-left" class="text-gray-300 w-3 md:w-4 h-3 md:h-4"></i>
+                            </button>
+                            <button class="carousel-next shrink-0 flex justify-center items-center rounded-full border transition 
+                            w-[32px] md:w-[38px] h-[32px] md:h-[38px] 
+                            border-[#939DB8]/20 bg-dark-200 
+                            disabled:opacity-40 hover:bg-dark-300">
+                                <i data-lucide="chevron-right" class="text-gray-300 w-3 md:w-4 h-3 md:h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    @layer utilities {
+                        .fade-right {
+                            -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+                            mask-image: linear-gradient(to right, black 80%, transparent 100%);
+                        }
+                    }
+                </style>
+
+                <div class="mt-9 w-full overflow-hidden relative">
+                    <div class="mt-9 w-full overflow-none relative">
+                        <div
+                            class="carousel-container flex transition-transform duration-300 ease-in-out relative  pb-8 md:px-4 lg:px-6">
+                            <!-- Murder Mystery 2 Card -->
+                            <div class="carousel-item shrink-0 snap-start snap-always mx-2" style="width: 400px;">
+                                <div class="card bg-dark-100 rounded-2xl p-7 border border-dark-300 
+                            shadow-card hover:border-custom-blue/50 transition-all group">
+                                    <div class="flex justify-between items-center mb-5">
+                                        <div class="flex items-center">
+                                            <span class="w-3 h-3 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+                                            <span class="text-sm text-green-400">Active</span>
+                                        </div>
+                                        <div class="text-sm text-gray-400">Updated: Jan 2024</div>
+                                    </div>
+                                    <img src="game/images/mm2_banner.webp" alt="Murder Mystery 2"
+                                        class="w-full h-56 object-cover rounded-xl mb-7 overflow-hidden">
+                                    <a href="https://www.roblox.com/games/142823291/Murder-Mystery-2" target="_blank"
+                                        class="text-2xl font-semibold mb-4 text-custom-blue hover:underline">Murder
+                                        Mystery 2</a>
+                                    <p class="text-gray-300 mb-5 leading-relaxed">
+                                        Feature-packed script with powerful gameplay-enhancing capabilities.
+                                    </p>
+                                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                                        <li class="flex items-center">
+                                            <i data-lucide="dollar-sign" class="w-4 h-4 mr-2 text-custom-blue"></i>
+                                            Coin Farm
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="target" class="w-4 h-4 mr-2 text-custom-blue"></i>
+                                            Ping-Based AimBot
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="shield" class="w-4 h-4 mr-2 text-yellow-400"></i>
+                                            Always Become Sheriff
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="zap" class="w-4 h-4 mr-2 text-yellow-400"></i>
+                                            Kill All
+                                        </li>
+                                    </ul>
+                                    <a href="/starry/games/mm2" class="mt-auto block px-6 py-3 bg-custom-blue text-dark-50 
+                                rounded-lg hover:bg-custom-blue/90 transition-colors 
+                                text-center font-semibold
+                                flex items-center justify-center">
+                                        View Features
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Break In 2 Card -->
+                            <div class="carousel-item shrink-0 snap-start snap-always mx-2" style="width: 400px;">
+                                <div class="card bg-dark-100 rounded-2xl p-7 border border-dark-300 
+                            shadow-card hover:border-custom-blue/50 transition-all group">
+                                    <div class="flex justify-between items-center mb-5">
+                                        <div class="flex items-center">
+                                            <span class="w-3 h-3 rounded-full bg-yellow-500 mr-2 animate-pulse"></span>
+                                            <span class="text-sm text-yellow-400">Unreleased</span>
+                                        </div>
+                                        <div class="text-sm text-gray-400">Updated: Jan 2024</div>
+                                    </div>
+                                    <img src="game/images/bi2_banner.webp" alt="Break In 2"
+                                        class="w-full h-56 object-cover rounded-xl mb-7 overflow-hidden">
+                                    <a href="https://www.roblox.com/games/4482425244/Break-In-2" target="_blank"
+                                        class="text-2xl font-semibold mb-4 text-custom-blue hover:underline">Break In
+                                        2</a>
+                                    <p class="text-gray-300 mb-5 leading-relaxed">
+                                        A fully server-sided script with an extensive feature set.
+                                    </p>
+                                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                                        <li class="flex items-center">
+                                            <i data-lucide="user-minus" class="w-4 h-4 mr-2 text-yellow-400"></i>
+                                            Kick Player
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="slash" class="w-4 h-4 mr-2 text-custom-blue"></i>
+                                            Kill Aura
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="activity" class="w-4 h-4 mr-2 text-custom-blue"></i>
+                                            Instant Kill Boss
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="map-pin" class="w-4 h-4 mr-2 text-custom-blue"></i>
+                                            Delete Map
+                                        </li>
+                                    </ul>
+                                    <a href="/starry/games/bi2" class="mt-auto block px-6 py-3 bg-custom-blue text-dark-50 
+                                rounded-lg hover:bg-custom-blue/90 transition-colors 
+                                text-center font-semibold
+                                flex items-center justify-center">
+                                        View Features
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Tower of Hell Card -->
+                            <div class="carousel-item shrink-0 snap-start snap-always mx-2" style="width: 400px;">
+                                <div class="card bg-dark-100 rounded-2xl p-7 border border-dark-300 
+                            shadow-card hover:border-custom-blue/50 transition-all group">
+                                    <div class="flex justify-between items-center mb-5">
+                                        <div class="flex items-center"> <span
+                                                class="w-3 h-3 rounded-full bg-red-500 mr-2 animate-pulse"></span>
+                                            <span class="text-sm text-red-400">Patched</span>
+                                        </div>
+                                        <div class="text-sm text-gray-400">Updated: Jan 2024</div>
+                                    </div>
+                                    <img src="game/images/toh_banner.webp" alt="Tower of Hell"
+                                        class="w-full h-56 object-cover rounded-xl mb-7 overflow-hidden">
+                                    <a href="https://www.roblox.com/games/1962086868/Tower-of-Hell" target="_blank"
+                                        class="text-2xl font-semibold mb-4 text-custom-blue hover:underline">Tower of
+                                        Hell</a>
+                                    <p class="text-gray-300 mb-5 leading-relaxed">
+                                        Advanced movement and bypass script with unparalleled control.
+                                    </p>
+                                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                                        <li class="flex items-center">
+                                            <i data-lucide="shield-off" class="w-4 h-4 mr-2 text-custom-blue"></i>
+                                            God Mode
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="flag" class="w-4 h-4 mr-2 text-custom-blue"></i>
+                                            Instant Win
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="unlock" class="w-4 h-4 mr-2 text-yellow-400"></i>
+                                            Anti-Cheat Bypass
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="repeat" class="w-4 h-4 mr-2 text-custom-blue"></i>
+                                            Auto Farm
+                                        </li>
+                                    </ul>
+                                    <a href="/starry/games/toh" class="mt-auto block px-6 py-3 bg-custom-blue text-dark-50 
+                                    rounded-lg hover:bg-custom-blue/90 transition-colors 
+                                    text-center font-semibold
+                                    flex items-center justify-center">
+                                        View Features
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="carousel-item shrink-0 snap-start snap-always mx-2" style="width: 400px;">
+                                <div class="card bg-dark-100 rounded-2xl p-7 border border-dark-300 
+                            shadow-card hover:border-custom-blue/50 transition-all group">
+                                    <div class="flex justify-between items-center mb-5">
+                                        <div class="flex items-center"> <span
+                                                class="w-3 h-3 rounded-full bg-red-500 mr-2 animate-pulse"></span>
+                                            <span class="text-sm text-red-400">Maintenance</span>
+                                        </div>
+                                        <div class="text-sm text-gray-400">Updated: December 2024</div>
+                                    </div>
+                                    <img src="game/images/toh_banner.webp" alt="Tower of Hell"
+                                        class="w-full h-56 object-cover rounded-xl mb-7 overflow-hidden">
+                                    <a href="https://www.roblox.com/games/1962086868/Tower-of-Hell" target="_blank"
+                                        class="text-2xl font-semibold mb-4 text-custom-blue hover:underline">Tower ofHell</a>
+                                        <p class="text-gray-300 mb-5 leading-relaxed h-12 line-clamp-2 
+                                        group relative cursor-help" title=" Use the script in any unsupported game or set ignoreGameCheck to true to gain access to unlimited universal features across different game modes.">
+                                        Use unsupported games or set ignoreGameCheck to unlock universal features!
+                                        <span class="hidden group-hover:block absolute z-10 bg-dark-100 border border-dark-300 p-2 rounded-lg shadow-lg left-0 right-0 -top-full">
+                                     Use the script in any unsupported game or set ignoreGameCheck to true to gain access to unlimited universal features across different game modes.
+                                        </span>
+                                    </p>
+                                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                                        <li class="flex items-center">
+                                            <i data-lucide="shield-off" class="w-4 h-4 mr-2 text-custom-blue"></i>
+                                            God Mode
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="flag" class="w-4 h-4 mr-2 text-custom-blue"></i>
+                                            Instant Win
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="unlock" class="w-4 h-4 mr-2 text-yellow-400"></i>
+                                            Anti-Cheat Bypass
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="repeat" class="w-4 h-4 mr-2 text-custom-blue"></i>
+                                            Auto Farm
+                                        </li>
+                                    </ul>
+                                    <a href="/game/toh" class="mt-auto block px-6 py-3 bg-custom-blue text-dark-50 
+                                rounded-lg hover:bg-custom-blue/90 transition-colors 
+                                text-center font-semibold
+                                flex items-center justify-center">
+                                        View Features
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="hidden sm:block absolute top-0 right-0 bottom-0 w-24 bg-gradient-to-l from-[#121212] to-transparent pointer-events-none z-10">
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <div class="section-divider"></div>
+    <footer class="bg-gradient-to-r from-gray-900 to-gray-800 py-12 border-t border-gray-700">
+        <div class="container mx-auto px-4 lg:px-6 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+
+                <div class="flex flex-col items-center md:items-start space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <img src="icon.png" alt="Starry Logo" class="w-12 h-12 rounded-xl shadow-lg">
+                        <span class="text-2xl font-black text-white tracking-tight">Starry</span>
+                    </div>
+                    <p class="text-gray-400 text-sm text-center md:text-left"></p>
+                </div>
+
+                <div class="flex justify-center space-x-6">
+                    <div class="flex flex-col space-y-2">
+                        <h4 class="text-white font-semibold mb-2">Quick Links</h4>
+                        <a href="/terms-of-service"
+                            class="text-gray-300 hover:text-white transition-colors text-sm">Terms of Service</a>
+                        <a href="/terms-of-service/#Privacy-Policy"
+                            class="text-gray-300 hover:text-white transition-colors text-sm">Privacy Policy</a>
+                        <a href="https://luau.tech/d"
+                            class="text-gray-300 hover:text-white transition-colors text-sm">Contact Us</a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center md:items-end space-y-3">
+                    <div class="flex space-x-4">
+                        <a href="https://luau.tech/d" target="_blank" rel="noopener noreferrer"
+                            class="text-white hover:text-gray-300 transition-colors duration-300 ease-in-out"
+                            aria-label="Visit Discord Website">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-8 h-8 hover:scale-110 transform transition-transform duration-300">
+                                <path
+                                    d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0787.0371c-.211.3765-.4447.8651-.6083 1.2493-1.8558-.2784-3.7098-.2784-5.5234 0-.1636-.3842-.4029-.8728-.6171-1.2493a.077.077 0 00-.0787-.0371 19.7161 19.7161 0 00-4.8851 1.5152.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8734-1.2952 1.2305-1.9967a.076.076 0 00-.0416-.1062c-.6528-.2476-1.2743-.5495-1.8722-.8905a.077.077 0 01-.0076-.1276c.1258-.0941.2516-.1926.3714-.2914a.0743.0743 0 01.0784-.0105c3.9262 1.7909 8.1766 1.7909 12.0551 0a.0739.0739 0 01.0788.0105c.1198.0988.246.1973.3718.2914a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.8728.8905.0762.0762 0 00-.0407.1062c.3611.7015.7729 1.3663 1.2309 1.9967a.0761.0761 0 00.0842.0276c1.9581-.6066 3.9466-1.5218 6.0006-3.0294a.0761.0761 0 00.0313-.0561c.4848-5.1766-.8104-9.6616-3.4211-13.6674a.0608.0608 0 00-.0314-.0277zM8.02 15.3312c-1.1412 0-2.0782-1.0487-2.0782-2.3415 0-1.2929.9223-2.3415 2.0782-2.3415 1.1676 0 2.0999 1.0486 2.0781 2.3415 0 1.2928-.9105 2.3415-2.0781 2.3415zm7.9373 0c-1.1412 0-2.0782-1.0487-2.0782-2.3415 0-1.2929.9223-2.3415 2.0782-2.3415 1.1676 0 2.0999 1.0486 2.0781 2.3415 0 1.2928-.9105 2.3415-2.0781 2.3415z" />
+                            </svg>
+                        </a>
+                        <a href="https://rscripts.net/@starry" target="_blank" rel="noopener noreferrer"
+                            class="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out"
+                            aria-label="Visit RScripts Profile">
+                            <img src="./images/rscripts-logo-rawpng.png" alt="RScripts"
+                                class="w-7 h-7 hover:scale-110 transform transition-transform duration-300" />
+                        </a>
+                    </div>
+                    <div class="text-gray-400 text-sm">
+                        © 2024 Starry Project. All Rights Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="./file/script.js"></script>
+</body>
+
+</html>

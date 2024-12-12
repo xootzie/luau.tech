@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Aurix</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            overflow-x: hidden;
+            position: relative;
+        }
+       
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(250, 32, 97, 0.1);
+            animation: fadeIn 1s ease-in;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.1rem;
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .brand-icon {
+            width: 32px;
+            height: 30px;
+        }
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(45deg, #fa2061, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-left: 0.2rem;
+        }
+        .navbar-right {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-link {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-link:hover {
+            color: #fa2061;
+            background: rgba(250, 32, 97, 0.1);
+        }
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #fa2061, #ff6b9d);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::before {
+            width: 80%;
+        }
+    
+        .container {
+            max-width: 800px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fa2061, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease-in;
+            position: relative;
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #fa2061, #ff6b9d);
+            animation: lineGrow 1s ease-out 1s forwards;
+        }
+        @keyframes lineGrow {
+            to { width: 100%; }
+        }
+        p {
+            color: #a0a0a0;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-in 0.3s backwards;
+        }
+        .image-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 2rem auto;
+            perspective: 1000px;
+        }
+        .construction-image {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+            z-index: 2;
+            transition: transform 0.3s ease-out;
+        }
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fa2061;
+            border-radius: 50%;
+            animation: moveParticle 15s infinite linear;
+            opacity: 0;
+        }
+        @keyframes moveParticle {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateY(0deg); }
+            50% { transform: translateY(-20px) rotateY(10deg); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at center, rgba(250, 32, 97, 0.2) 0%, rgba(250, 32, 97, 0.1) 40%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            filter: blur(30px);
+            pointer-events: none;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeIn 1s ease-in 1.2s backwards;
+        }
+        .social-link {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .social-link:hover {
+            color: #fa2061;
+        }
+        .social-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #fa2061;
+            transition: width 0.3s ease;
+        }
+        .social-link:hover::after {
+            width: 100%;
+        }
+
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loader {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+
+        .loader:before {
+            border-top-color: #fa2061;
+            animation-duration: 1s;
+        }
+
+        .loader:after {
+            border-left-color: #ff6b9d;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loader-cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate 2s infinite linear;
+        }
+
+        .loader-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #fa2061;
+            background: rgba(250, 32, 97, 0.1);
+            box-shadow: 0 0 20px rgba(250, 32, 97, 0.2);
+        }
+
+        .loader-face:nth-child(1) { transform: translateZ(50px); }
+        .loader-face:nth-child(2) { transform: rotateY(180deg) translateZ(50px); }
+        .loader-face:nth-child(3) { transform: rotateY(90deg) translateZ(50px); }
+        .loader-face:nth-child(4) { transform: rotateY(-90deg) translateZ(50px); }
+        .loader-face:nth-child(5) { transform: rotateX(90deg) translateZ(50px); }
+        .loader-face:nth-child(6) { transform: rotateX(-90deg) translateZ(50px); }
+
+        @keyframes rotate {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        .loader-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .no-scroll {
+            overflow: hidden;
+        }
+
+
+        @media (max-width: 767px) {
+            .container {
+            padding: 1rem;
+            }
+            h1 {
+            font-size: 2rem;
+            }
+            p {
+            font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .container {
+            padding: 2rem;
+            }
+            h1 {
+            font-size: 2.5rem;
+            }
+            p {
+            font-size: 1.2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+            padding: 3rem;
+            }
+            h1 {
+            font-size: 3rem;
+            }
+            p {
+            font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="loader-wrapper">
+        <div class="loader">
+            <div class="loader-cube">
+                <div class="loader-face"></div>
+                <div class="loader-face"></div>
+                <div class="loader-face"></div>
+                <div class="loader-face"></div>
+                <div class="loader-face"></div>
+                <div class="loader-face"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <a href="/" class="brand">
+            <img src="./images/V.png" alt="Aurix Icon" class="brand-icon">
+            <span class="brand-name">Aurix</span>
+        </a>
+        <div class="navbar-right">
+            <a href="/key" class="nav-link">Get Script Key</a>
+            <a href="/amera" class="nav-link">Amera</a>
+        </div>
+    </nav>
+
+    <div class="particles"></div>
+    <div class="container">
+        <div class="image-container">
+            <div class="glow"></div>
+            <img class="construction-image" src="./images/V.png" alt="Construction">
+        </div>
+        <h1>Under Construction</h1>
+        <p>We're working hard to bring you something amazing. Check back soon!</p>
+        <div class="social-links">
+            <a href="/discord" class="nav-link">Discord Server</a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        
+            document.body.classList.add('no-scroll');
+            
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const loader = document.querySelector('.loader-wrapper');
+                    loader.classList.add('loader-hidden');
+                    document.body.classList.remove('no-scroll');
+                    
+                    loader.addEventListener('transitionend', () => {
+                        document.body.removeChild(loader);
+                    });
+                }, 2000);
+            });
+
+            const imageContainer = document.querySelector('.image-container');
+            const constructionImage = document.querySelector('.construction-image');
+            const glow = document.querySelector('.glow');
+            
+            document.addEventListener('mousemove', (e) => {
+                const rect = imageContainer.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                const xAxis = (centerX - e.clientX) / 25;
+                const yAxis = (centerY - e.clientY) / 25;
+                
+                constructionImage.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                glow.style.transform = `translate(calc(-50% + ${xAxis}px), calc(-50% + ${yAxis}px))`;
+            });
+
+            imageContainer.addEventListener('mouseleave', () => {
+                constructionImage.style.transform = 'rotateY(0) rotateX(0)';
+            });
+
+            const particles = document.querySelector('.particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                createParticle();
+            }
+
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const startPos = Math.random() * 100;
+                particle.style.left = `${startPos}%`;
+                
+                const size = Math.random() * 3 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+                particle.style.animation = `moveParticle ${duration}s ${delay}s infinite linear`;
+                
+                particles.appendChild(particle);
+            }
+        });
+    </script>
+</body>
+</html>

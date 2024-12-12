@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Starry ✨ - Terms of Service & Privacy Policy</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            50: '#121212',
+                            100: '#1E1E1E',
+                            200: '#2A2A2A',
+                            300: '#383838',
+                            400: '#4D4D4D',
+                            500: '#666666',
+                            600: '#808080',
+                            700: '#999999',
+                        },
+                        brand: {
+                            50: '#e6f2ff',
+                            100: '#3b82f6',
+                            200: '#2563eb',
+                            300: '#1d4ed8',
+                        },
+                        custom: {
+                            blue: '#82a7fb',
+                            accent: '#6366f1'
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(130, 167, 251, 0.3)',
+                        'card': '0 10px 25px rgba(0, 0, 0, 0.2)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212;
+            scroll-behavior: smooth;
+        }
+
+        .navbar-blur {
+            backdrop-filter: blur(15px) saturate(180%);
+            background-color: rgba(30, 30, 30, 0.85);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg,
+                    rgba(130, 167, 251, 0.1) 0%,
+                    rgba(130, 167, 251, 0.05) 100%);
+        }
+
+        .section-divider {
+            position: relative;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(130, 167, 251, 0.3), transparent);
+        }
+    </style>
+</head>
+
+<body class="text-white bg-dark-50">
+    <nav class="navbar-blur sticky top-0 z-50 px-4 lg:px-6 py-1 border-b border-dark-300">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4  p-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="../icon.png" alt="Starry Logo" class="w-10 h-10 rounded-full shadow-md">
+                <div>
+                <span class="text-xl font-bold text-custom-blue tracking-wider">Starry</span>
+                <p class="text-xs text-gray-200">Privacy Terms</p>
+                </div>
+                <div class="ml-auto">
+                <span class="bg-white bg-opacity-20 text-white text-xs px-2 py-1 rounded-full">V.1.1</span>
+                </div>
+                </div>
+            <button id="hamburger" class="lg:hidden text-gray-300 hover:text-custom-blue focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+
+            <div id="navMenu" class="hidden lg:flex space-x-6 items-center">
+                <a href="/" class="text-gray-300 hover:text-custom-blue transition-colors flex items-center cursor-pointer">
+                    <i data-lucide="house" class="w-5 h-5 mr-2"></i>Home
+                </a>
+            </div>
+        </div>
+    
+        <div id="mobileMenu" class="hidden lg:hidden flex flex-col space-y-4 px-6 py-4 bg-transparent border-t border-dark-300">
+            <a href="/" class="text-gray-300 hover:text-custom-blue transition-colors flex items-center">
+                <i data-lucide="users" class="w-5 h-5 mr-2"></i>Home
+            </a>
+        </div>
+    </nav>
+
+    <section class="relative hero-gradient min-h-[25vh] flex flex-col justify-center items-center text-center px-4 py-12">
+        <div class="container mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-8">
+                Terms of <span class="text-custom-blue">Service</span> & <span class="text-custom-blue">Privacy</span>
+            </h1>
+            <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-12 leading-relaxed">
+                Last Updated: December 2024
+            </p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="py-24 bg-dark-50">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="max-w-5xl mx-auto bg-dark-100 rounded-3xl p-12 md:p-16 border border-dark-300 shadow-card space-y-12">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-custom-blue">1. Acceptance of Terms</h2>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        By accessing or using Starry's services, you agree to be under the use of these Terms of Service. If you do not agree with these terms, you should not use our services.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-custom-blue">2. User Conduct</h2>
+                    <ul class="text-gray-300 space-y-4 list-disc pl-6 text-lg">
+                        <li>You agree to use our services only for lawful purposes.</li>
+                        <li>You will not attempt to circumvent or disable any security features of our platform.</li>
+                        <li>You agree to respect the integrity of our software by refraining from any attempts to reverse engineer, decompile, or circumvent our proprietary obfuscation techniques.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-custom-blue">3. Intellectual Property</h2>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        All content, scripts, and features provided by Starry are the intellectual property of the Starry Project. Unauthorized reproduction or distribution is prohibited.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-custom-blue">4. Disclaimer of Warranties</h2>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        Starry provides services "as is" without any warranties. We do not guarantee the continuous, uninterrupted, or error-free operation of our scripts or services.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-custom-blue">5. Limitation of Liability</h2>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        Starry shall not be liable for any direct, indirect, incidental, special, or consequential damages arising from the use of our services.
+                    </p>
+                </div>
+                
+                <div id ="Modifications-to-Terms">
+                    <h2 class="text-3xl font-bold mb-6 text-custom-blue">6. Modifications to Terms</h2>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        We reserve the right to modify these Terms of Service at any time. Continued use of our services after changes constitutes acceptance of the new terms.
+                    </p>
+                    <div id="Privacy-Policy"></div>
+                </div>
+                
+                <div class="section-divider my-12"></div>
+
+                <div id="Privacy-Policy-Label">
+                    <h2 class="text-3xl font-bold mb-8 text-custom-blue">7. Privacy Policy</h2>
+                    <h3 class="text-2xl font-semibold mb-4 text-custom-blue">Data Collection</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-lg">
+                        At Starry, we are committed to transparency about our data practices. Here's what we collect and do not collect:
+                    </p>
+
+                    <h4 class="text-xl font-semibold mb-1 text-custom-blue">Collected Information:</h4>
+                    <p class="text-xs text-gray-500 mb-4">Sourced from luarmor.net/tos</p>
+                    <ul class="text-gray-300 space-y-4 mb-6 list-disc pl-6 text-lg">
+                        <li><strong>HWID (Hardware Identifier)</strong>: HWID is basically a hash(or 'ID') of device properties. It does not contain any sensitive information</li>
+                        <li><strong>IP Addresses</strong>: For security if anti-tamper is triggered</li>
+                        <li><strong>Timestamps</strong>: To track service usage and performance</li>
+                        <li><strong>User-Agent Headers</strong>: This is just so we know which Executor you are using</li>
+                        <li><strong>Server Job ID</strong>: Only some desktop executors send this information. Android executors do not send it, so it will appear as "?"</li>
+                        <li><strong>Discord ID</strong>: Only collected for Premium users</li>
+                    </ul>
+
+                    <h4 class="text-xl font-semibold mb-4 text-custom-blue">Not Collected:</h4>
+                    <ul class="text-gray-300 space-y-4 mb-6 list-disc pl-6 text-lg">
+                        <li><strong>Roblox usernames</strong></li>
+                        <li><strong>Roblox Account IDs</strong></li>
+                        <li><strong>In-game Stats</strong></li>
+                        <li><strong>Device Details</strong></li>
+                    </ul>
+
+                    <h4 class="text-xl font-semibold mb-4 text-custom-blue">Data Usage</h4>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-lg">
+                        We use collected data solely for service improvement, security, and performance optimization. We do not sell or share your data with third parties.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gradient-to-r from-gray-900 to-gray-800 py-12 border-t border-gray-700">
+        <div class="container mx-auto px-4 lg:px-6 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+              
+                <div class="flex flex-col items-center md:items-start space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <img src="../icon.png" alt="Starry Logo" class="w-12 h-12 rounded-xl shadow-lg">
+                        <span class="text-2xl font-black text-white tracking-tight">Starry</span>
+                    </div>
+                    <p class="text-gray-400 text-sm text-center md:text-left"></p>
+                </div>
+    
+                <div class="flex justify-center space-x-6">
+                    <div class="flex flex-col space-y-2">
+                        <h4 class="text-white font-semibold mb-2">Quick Links</h4>
+                        <a href="/terms-of-service" class="text-gray-300 hover:text-white transition-colors text-sm">Terms of Service</a>
+                        <a href="/terms-of-service/#Privacy-Policy" class="text-gray-300 hover:text-white transition-colors text-sm">Privacy Policy</a>
+                        <a href="https://luau.tech/d" class="text-gray-300 hover:text-white transition-colors text-sm">Contact Us</a>
+                    </div>
+                </div>
+    
+                <div class="flex flex-col items-center md:items-end space-y-3">
+                    <div class="flex space-x-4">
+                        <a href="https://luau.tech/d"
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        class="text-white hover:text-gray-300 transition-colors duration-300 ease-in-out"
+                        aria-label="Visit Discord Website">
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                 viewBox="0 0 24 24" 
+                                 fill="currentColor" 
+                                 class="w-8 h-8 hover:scale-110 transform transition-transform duration-300">
+                                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0787.0371c-.211.3765-.4447.8651-.6083 1.2493-1.8558-.2784-3.7098-.2784-5.5234 0-.1636-.3842-.4029-.8728-.6171-1.2493a.077.077 0 00-.0787-.0371 19.7161 19.7161 0 00-4.8851 1.5152.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8734-1.2952 1.2305-1.9967a.076.076 0 00-.0416-.1062c-.6528-.2476-1.2743-.5495-1.8722-.8905a.077.077 0 01-.0076-.1276c.1258-.0941.2516-.1926.3714-.2914a.0743.0743 0 01.0784-.0105c3.9262 1.7909 8.1766 1.7909 12.0551 0a.0739.0739 0 01.0788.0105c.1198.0988.246.1973.3718.2914a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.8728.8905.0762.0762 0 00-.0407.1062c.3611.7015.7729 1.3663 1.2309 1.9967a.0761.0761 0 00.0842.0276c1.9581-.6066 3.9466-1.5218 6.0006-3.0294a.0761.0761 0 00.0313-.0561c.4848-5.1766-.8104-9.6616-3.4211-13.6674a.0608.0608 0 00-.0314-.0277zM8.02 15.3312c-1.1412 0-2.0782-1.0487-2.0782-2.3415 0-1.2929.9223-2.3415 2.0782-2.3415 1.1676 0 2.0999 1.0486 2.0781 2.3415 0 1.2928-.9105 2.3415-2.0781 2.3415zm7.9373 0c-1.1412 0-2.0782-1.0487-2.0782-2.3415 0-1.2929.9223-2.3415 2.0782-2.3415 1.1676 0 2.0999 1.0486 2.0781 2.3415 0 1.2928-.9105 2.3415-2.0781 2.3415z"/>
+                            </svg>
+                        </a>
+                        <a href="https://rscripts.net/@starry" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out"
+                           aria-label="Visit RScripts Profile">
+                            <img src="../rscripts-logo-rawpng.png" 
+                                 alt="RScripts" 
+                                 class="w-7 h-7 hover:scale-110 transform transition-transform duration-300" />
+                        </a>
+                    </div>
+                    <div class="text-gray-400 text-sm">
+                        © 2024 Starry Project. All Rights Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            const mobileMenu = document.getElementById('mobileMenu');
+           
+            
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+            });
+
+
+
+            // New hash scrolling functionality
+
+    function scrollToHashElement() {
+
+const hash = window.location.hash.substring(1); // Remove the # from the hash
+
+if (hash) {
+
+    const element = document.querySelector(`[id="${hash}"]`);
+
+    if (element) {
+
+        element.scrollIntoView({ 
+
+            behavior: 'smooth',
+
+            block: 'start'
+
+        });
+
+    }
+
+}
+
+}
+
+
+// Call the function on page load
+
+scrollToHashElement();
+
+
+// Also listen for hash changes
+
+window.addEventListener('hashchange', scrollToHashElement);
+
+             });
+
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

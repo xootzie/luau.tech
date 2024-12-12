@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amera Universal</title>
+  <link rel="icon" type="image/x-icon" href="ameraicon.ico">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(126, 150, 190, 0.1);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #ffffff;
+      gap: 0.5rem;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .brand-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      background: linear-gradient(45deg, #7e96be, #a8c1e2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-link {
+      color: #a0a0a0;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-link:hover {
+      color: #7e96be;
+      background: rgba(126, 150, 190, 0.1);
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: linear-gradient(45deg, #7e96be, #a8c1e2);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::before {
+      width: 80%;
+    }
+
+    .section {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 2rem;
+      position: relative;
+      scroll-snap-align: start;
+    }
+
+    #hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .section-content {
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .discord-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(45deg, #7e96be, #a8c1e2);
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+    }
+
+    .discord-button:hover {
+      transform: translateY(-5px);
+    }
+
+    .image-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 2rem auto;
+      perspective: 1000px;
+    }
+
+    .construction-image {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+      z-index: 2;
+      transition: transform 0.3s ease-out;
+    }
+
+    .glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle at center, rgba(126, 150, 190, 0.2) 0%, rgba(126, 150, 190, 0.1) 40%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      filter: blur(30px);
+      pointer-events: none;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(126, 150, 190, 0.2);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(126, 150, 190, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: #7e96be;
+      margin-bottom: 1rem;
+    }
+
+    .footer {
+      background: rgba(18, 18, 18, 0.95);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(126, 150, 190, 0.1);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      color: #a0a0a0;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+
+    .social-link:hover {
+      color: #7e96be;
+      background: rgba(126, 150, 190, 0.1);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotateY(0deg); }
+      50% { transform: translateY(-20px) rotateY(10deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .nav-links {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brand {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#" class="brand">
+      <img src="../images/Amera_logo.png" alt="Amera Logo" class="brand-icon">
+      <span class="brand-name">Amera</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="https://discord.com/oauth2/authorize?client_id=1277015372494540872" class="nav-link">Invite</a>
+    </div>
+  </nav>
+
+  <section id="hero" class="section">
+    <div class="image-container">
+      <div class="glow"></div>
+      <img class="construction-image" src="../images/Amera_logo.png" alt="Amera Logo">
+    </div>
+    <div class="section-content">
+      <h1 style="background: linear-gradient(45deg, #7e96be, #a8c1e2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Amera Universal</h1>
+      <p style="color: #a0a0a0; margin: 1rem 0;">Enhance your Roblox exploiting experience with our powerful Discord bot. Get detailed information, executor stats, and more!</p>
+      <a href="https://discord.com/oauth2/authorize?client_id=1277015372494540872" class="nav-link">Invite to Server</a>
+    </div>
+  </section>
+
+  <section id="features" class="section">
+    <div class="section-content">
+      <h2 style="background: linear-gradient(45deg, #7e96be, #a8c1e2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">Bot Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3 style="color: #7e96be; margin-bottom: 0.5rem;">Executor Stats</h3>
+          <p>Detailed performance metrics and insights for Roblox executors.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3 style="color: #7e96be; margin-bottom: 0.5rem;">Information Hub</h3>
+          <p>Comprehensive database of Roblox exploiting tools and resources.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3 style="color: #7e96be; margin-bottom: 0.5rem;">Real-time Updates</h3>
+          <p>Instant notifications about executor changes and game modifications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="section-content">
+      <h2 style="background: linear-gradient(45deg, #7e96be, #a8c1e2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">About Amera</h2>
+      <p style="color: #a0a0a0; max-width: 700px; margin: 0 auto 1rem;">Amera is a cutting-edge Discord bot designed specifically for the Roblox exploiting community. Our mission is to provide comprehensive, real-time information and tools to enhance your gaming experience.</p>
+      <p style="color: #a0a0a0; max-width: 700px; margin: 0 auto;">With advanced tracking, detailed analytics, and a user-friendly interface, Amera bridges the gap between exploiters and information.</p>
+    </div>
+  </section>
+
+  <footer class="footer section">
+    <div class="section-content">
+      <h2 style="background: linear-gradient(45deg, #7e96be, #a8c1e2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">Connect with Amera</h2>
+      <p style="color: #a0a0a0; margin-bottom: 1rem;">Join our community and stay updated with the latest features and developments.</p>
+      <div class="social-links">
+        <a href="https://discord.gg/" class="social-link">Discord</a>
+        <a href="https://twitter.com/" class="social-link">Twitter</a>
+        <a href="https://github.com/" class="social-link">GitHub</a>
+      </div>
+      <p class="copyright" style="color: #a0a0a0; margin-top: 1rem;">&copy; 2024 Amera Universal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.section-content').forEach(section => {
+        observer.observe(section);
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
