@@ -1,7 +1,3 @@
-
-        const { Notification } = await import("../file/notification.js");
-        const notifier = new Notification();
-            
             const supportedGamesSection = document.getElementById('supported-games');
             const scrollDownIndicator = document.getElementById('scrollDownIndicator');
             let isScrolledDown = false;
@@ -55,11 +51,6 @@
                 navigator.clipboard.writeText(scriptText).then(() => {
                     copyScriptBtn.innerHTML = '<i data-lucide="check" class="w-5 h-5 mr-2"></i>Copied!';
                     lucide.createIcons();
-                    notifier.createNotification({
-                        title: 'Copied to clipboard!',
-                        type: 'success',
-                        duration: 5000,
-                    });
                     setTimeout(() => {
                         copyScriptBtn.innerHTML = '<i data-lucide="copy" class="w-5 h-5 mr-2"></i>Copy Script';
                         lucide.createIcons();
