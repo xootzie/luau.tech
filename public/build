@@ -15,11 +15,13 @@
           ~ https://luau.tech
 ]]
 
-local function _:load(branch)
-  local i = {[0] = "219566b932eb38b9819542b23fa68ab2",[1] = "0"} 
+local function load(branch)
+  local i = {[0] = "219566b932eb38b9819542b23fa68ab2", [1] = "0"} 
   local id = i[branch]
   
-  if not id then error("Starry] Invalid branch selection. Use 0 for preview or 1 for stable.") end
+  if not id then 
+    error("Starry] Invalid branch selection. Use 0 for preview or 1 for stable.") 
+  end
   
   local s, err = pcall(function()
       loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/" .. id .. ".lua"))()
@@ -30,6 +32,6 @@ local function _:load(branch)
   end
 end
 
-_:load(0)
+load(0)
 -- 0 for preview release
 -- 1 for stable release
