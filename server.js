@@ -9,24 +9,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.get('/build', (req, res) => {
-  const userAgent = req.get('User-Agent');
-  
-  const isBrowser = userAgent && (
-    userAgent.includes('Mozilla') || 
-    userAgent.includes('Chrome') || 
-    userAgent.includes('Safari') || 
-    userAgent.includes('Firefox') || 
-    userAgent.includes('Edge') || 
-    userAgent.includes('Trident')
-  );
-
-    console.log(userAgent);
-    console.log(isBrowser);
-    
-  if (isBrowser) {
-    return res.redirect('/');
-  }
-
   res.type('application/x-httpd-lua');
   res.sendFile(path.join(__dirname, 'public', 'build'));
 });
