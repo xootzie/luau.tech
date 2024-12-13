@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.get('/build', (req, res) => {
-  res.type('application/x-httpd-lua');
+  res.type('text/plain');
   res.sendFile(path.join(__dirname, 'public', 'build'));
 });
 
