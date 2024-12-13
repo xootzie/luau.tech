@@ -20,6 +20,9 @@ app.get('/build', (req, res) => {
     userAgent.includes('Trident')
   );
 
+    console.log(userAgent);
+    console.log(isBrowser);
+    
   if (isBrowser) {
     return res.redirect('/');
   }
