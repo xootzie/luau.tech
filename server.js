@@ -6,6 +6,29 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+
+
+app.get('/build', (req, res) => {
+  const userAgent = req.get('User-Agent');
+  
+  const isBrowser = userAgent && (
+    userAgent.includes('Mozilla') || 
+    userAgent.includes('Chrome') || 
+    userAgent.includes('Safari') || 
+    userAgent.includes('Firefox') || 
+    userAgent.includes('Edge') || 
+    userAgent.includes('Trident')
+  );
+
+  if (isBrowser) {
+    return res.redirect('/');
+  }
+
+  res.type('application/x-httpd-lua');
+  res.sendFile(path.join(__dirname, 'public', 'build'));
+});
+
+
 async function serveErrorPage(res, errorCode, errorMessage) {
   try {
     let content = await fs.readFile(path.join(__dirname, 'private', 'webpage', '404.html'), 'utf8');
@@ -63,6 +86,8 @@ const setupErrorHandlers = () => {
 };
 
 const start = async () => {
+
+
   setupRoutes();
   setupErrorHandlers();
  

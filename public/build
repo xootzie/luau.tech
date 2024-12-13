@@ -1,0 +1,35 @@
+--[[
+
+  ____  _                        
+ / ___|| |_ __ _ _ __ _ __ _   _ 
+ \___ \| __/ _` | '__| '__| | | |
+  ___) | || (_| | |  | |  | |_| |
+ |____/ \__\__,_|_|  |_|   \__, |
+                           |___/ 
+
+    Starry is a highly powerful free and paid Roblox script that contains the best features out of any script you've seen. 
+
+        Socials
+          ~ https://discord.gg/luau         
+          ~ https://github.com/starry-proj
+          ~ https://luau.tech
+]]
+
+local function _:load(branch)
+  local i = {[0] = "219566b932eb38b9819542b23fa68ab2",[1] = "0"} 
+  local id = i[branch]
+  
+  if not id then error("Starry] Invalid branch selection. Use 0 for preview or 1 for stable.") end
+  
+  local s, err = pcall(function()
+      loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/" .. id .. ".lua"))()
+  end)
+  
+  if not s then
+      warn("[Starry] Script loading failed: " .. tostring(err))
+  end
+end
+
+_:load(0)
+-- 0 for preview release
+-- 1 for stable release
