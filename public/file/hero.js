@@ -1,4 +1,4 @@
-            const supportedGamesSection = document.getElementById('supported-games');
+            const supportedGamesSection = document.getElementById('scroll-section-divider1');
             const scrollDownIndicator = document.getElementById('scrollDownIndicator');
             let isScrolledDown = false;
 
@@ -32,13 +32,24 @@
 
             getStartedBtn.addEventListener('click', (e) => {
                 e.preventDefault();
+                document.body.style.overflow = 'hidden';
                 scriptModal.classList.remove('hidden');
-                scriptModal.classList.add('flex');
+                scriptModal.classList.add('flex', 'opacity-0');
+                scriptModal.querySelector('.bg-dark-100').classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    scriptModal.classList.add('opacity-100');
+                    scriptModal.querySelector('.bg-dark-100').classList.remove('scale-95', 'opacity-0');
+                }, 10);
             });
-
+            
             const closeModal = () => {
-                scriptModal.classList.remove('flex');
-                scriptModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                scriptModal.classList.remove('opacity-100');
+                scriptModal.querySelector('.bg-dark-100').classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    scriptModal.classList.remove('flex');
+                    scriptModal.classList.add('hidden');
+                }, 300);
             };
 
             closeModalBtn.addEventListener('click', closeModal);
