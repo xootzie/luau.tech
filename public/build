@@ -1,37 +1,55 @@
 --[[
 
-  ____  _                        
- / ___|| |_ __ _ _ __ _ __ _   _ 
- \___ \| __/ _` | '__| '__| | | |
-  ___) | || (_| | |  | |  | |_| |
- |____/ \__\__,_|_|  |_|   \__, |
-                           |___/ 
+                 ___                                                  
+                (   )                                                 
+        .--.     | |_       .---.   ___ .-.     ___ .-.     ___  ___  
+      /  _  \   (   __)    / .-, \ (   )   \   (   )   \   (   )(   ) 
+     . .' `. ;   | |      (__) ; |  | ' .-. ;   | ' .-. ;   | |  | |  
+     | '   | |   | | ___    .'`  |  |  / (___)  |  / (___)  | |  | |  
+     _\_`.(___)  | |(   )  / .'| |  | |         | |         | '  | |  
+    (   ). '.    | | | |  | /  | |  | |         | |         '  `-' |  
+     | |  `\ |   | ' | |  ; |  ; |  | |         | |          `.__. |  
+     ; '._,' '   ' `-' ;  ' `-'  |  | |         | |          ___ | |  
+      '.___.'     `.__.   `.__.'_. (___)       (___)        (   )' |  
+                                                             ; `-' '  
+                                                              .__.'   
+    ~ discord.gg/luau
+    ~ github.com/starry-proj
 
-    Starry is a highly powerful free and paid Roblox script that contains the best features out of any script you've seen. 
+    <-------------------->
+    
+      Starry is an all-powerful script hub developed in TypeScript with Roblox-TS.
+      
+      Alongside being the best script for all supported games, Starry is relatively bug-free.
+      
+      Starry brought to you by Suno & Zade ❤️
 
-        Socials
-          ~ https://discord.gg/luau         
-          ~ https://github.com/starry-proj
-          ~ https://luau.tech
+    <-------------------->
+
+    To load the Stable, and bug-free edition of Starry,
+    
+    change it to `loadVersion(1)`.
+
 ]]
 
-local function load(branch)
-  local i = {[0] = "219566b932eb38b9819542b23fa68ab2", [1] = "0"} 
-  local id = i[branch]
+local function loadVersion(branch: number)
+  local releaseIds = {[0] = "219566b932eb38b9819542b23fa68ab2", [1] = "6844e6723348ce4f4560c63a422dd65b"}
+  local branch = releaseIds[branch]
   
-  if not id then 
-    error("Starry] Invalid branch selection. Use 0 for preview or 1 for stable.") 
+  if not branch then -- 404
+      return
   end
   
-  local s, err = pcall(function()
-      loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/" .. id .. ".lua"))()
+  local success, response = pcall(function()
+      loadstring(game:HttpGet(`https://api.luarmor.net/files/v3/loaders/{branch}.lua`))()
   end)
   
-  if not s then
-      warn("[Starry] Script loading failed: " .. tostring(err))
+  if not success then
+      print(`Starry loader failure!`)
+      warn(`{response}\n`)
+      
+      print("Report this issue into our Discord server: discord.gg/luau")
   end
 end
 
-load(0)
--- 0 for preview release
--- 1 for stable release
+loadVersion(0)
