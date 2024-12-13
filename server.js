@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/build', (req, res) => {
   res.type('text/plain');
-  res.sendFile(path.join(__dirname, 'public', 'build'));
+  res.sendFile(path.join(__dirname, 'private', 'api', 'development', 'loader'));
 });
 
 
