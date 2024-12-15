@@ -48,6 +48,7 @@ const setupRoutes = async () => {
   const versionSearchRoute = require('./private/api/roblox/version/search.js');
   const arrayValidateRoute = require('./private/api/text/arrayValidate.js');
   const taxCalculatorRoute = require('./private/api/roblox/utility/robuxTaxCalc.js');
+  const sendApxRoute = require('./private/api/discord/sendapx.js');
 
   app.post('/api/array/validate', arrayValidateRoute.arrayValidateHandler);
   app.get('/api/text/asciify', asciiRoute.asciiHandler);
@@ -55,6 +56,7 @@ const setupRoutes = async () => {
   app.get('/api/roblox/executors/list', executorListRoute.robloxListHandler);
   app.get('/api/roblox/executors/search', executorSearchRoute.executorSearchHandler);
   app.get('/api/roblox/version/search', versionSearchRoute.versionSearchHandler);
+  app.post('/api/discord/send-apx', sendApxRoute.sendApxHandler);
 };
 
 const setupErrorHandlers = () => {
