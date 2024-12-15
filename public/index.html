@@ -10,62 +10,62 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
     <script>
-       tailwind.config = {
-    theme: {
-        extend: {
-            colors: {
-                dark: {
-                    50: '#121212',
-                    100: '#1E1E1E',
-                    200: '#2A2A2A',
-                    300: '#383838',
-                    400: '#4D4D4D',
-                    500: '#666666',
-                    600: '#808080',
-                    700: '#999999',
-                },
-                brand: {
-                    50: '#e6f2ff',
-                    100: '#3b82f6',
-                    200: '#2563eb',
-                    300: '#1d4ed8',
-                },
-                custom: {
-                    blue: '#82a7fb',
-                    accent: '#6366f1'
-                }
-            },
-            boxShadow: {
-                'glow': '0 0 20px rgba(130, 167, 251, 0.3)',
-                'card': '0 10px 25px rgba(0, 0, 0, 0.2)'
-            },
-            animation: {
-                'fade-in-up': 'fadeInUp 0.7s ease-out',
-                'subtle-bounce': 'subtleBounce 1.5s infinite',
-                'card-hover': 'cardHover 0.3s ease-in-out',
-                'scroll-reveal': 'scrollReveal 0.8s ease-out'
-            },
-            keyframes: {
-                fadeInUp: {
-                    '0%': { opacity: '0', transform: 'translateY(20px)' },
-                    '100%': { opacity: '1', transform: 'translateY(0)' }
-                },
-                subtleBounce: {
-                    '0%, 100%': { transform: 'translateY(0)' },
-                    '50%': { transform: 'translateY(-10px)' }
-                },
-                cardHover: {
-                    '0%': { transform: 'scale(1)', boxShadow: 'none' },
-                    '100%': { transform: 'scale(1.03)', boxShadow: '0 15px 30px rgba(0,0,0,0.2)' }
-                },
-                scrollReveal: {
-                    '0%': { opacity: '0', transform: 'translateY(30px)' },
-                    '100%': { opacity: '1', transform: 'translateY(0)' }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            50: '#121212',
+                            100: '#1E1E1E',
+                            200: '#2A2A2A',
+                            300: '#383838',
+                            400: '#4D4D4D',
+                            500: '#666666',
+                            600: '#808080',
+                            700: '#999999',
+                        },
+                        brand: {
+                            50: '#e6f2ff',
+                            100: '#3b82f6',
+                            200: '#2563eb',
+                            300: '#1d4ed8',
+                        },
+                        custom: {
+                            blue: '#82a7fb',
+                            accent: '#6366f1'
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(130, 167, 251, 0.3)',
+                        'card': '0 10px 25px rgba(0, 0, 0, 0.2)'
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.7s ease-out',
+                        'subtle-bounce': 'subtleBounce 1.5s infinite',
+                        'card-hover': 'cardHover 0.3s ease-in-out',
+                        'scroll-reveal': 'scrollReveal 0.8s ease-out'
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        subtleBounce: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        cardHover: {
+                            '0%': { transform: 'scale(1)', boxShadow: 'none' },
+                            '100%': { transform: 'scale(1.03)', boxShadow: '0 15px 30px rgba(0,0,0,0.2)' }
+                        },
+                        scrollReveal: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
                 }
             }
         }
-    }
-}
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
@@ -76,10 +76,12 @@
             scroll-behavior: smooth;
             max-width: 100%;
         }
+
         .navbar-blur {
             backdrop-filter: blur(15px) saturate(180%);
             background-color: rgba(30, 30, 30, 0.85);
         }
+
         .card {
 
             transition: all 0.4s ease;
@@ -89,13 +91,16 @@
             transform-origin: center bottom;
 
         }
+
         .card:hover {
             transform: translateY(-15px) scale(1.03);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
+
         .card img {
             transition: transform 0.4s ease, opacity 0.4s ease;
         }
+
         .card:hover img {
             transform: scale(1.1);
         }
@@ -107,21 +112,23 @@
         }
 
         @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-.animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out;
-}
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
 
         @keyframes bounce {
+
             0%,
             20%,
             50%,
@@ -129,9 +136,11 @@
             100% {
                 transform: translateY(0);
             }
+
             40% {
                 transform: translateY(-10px);
             }
+
             60% {
                 transform: translateY(-5px);
             }
@@ -139,28 +148,31 @@
 
         @keyframes pulse-glow {
 
-0%, 100% { 
+            0%,
+            100% {
 
-    box-shadow: 0 0 10px rgba(130, 167, 251, 0.3);
+                box-shadow: 0 0 10px rgba(130, 167, 251, 0.3);
 
-}
+            }
 
-50% { 
+            50% {
 
-    box-shadow: 0 0 20px rgba(130, 167, 251, 0.6);
+                box-shadow: 0 0 20px rgba(130, 167, 251, 0.6);
 
-}
+            }
 
-}
+        }
 
         .scroll-bounce {
             animation: bounce 1.5s infinite;
         }
+
         .section-divider {
             position: relative;
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
         }
+
         .section-divider::before {
             content: '';
             position: absolute;
@@ -170,6 +182,7 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(130, 167, 251, 0.3), transparent);
         }
+
         .modal-backdrop {
             background-color: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(5px);
@@ -199,8 +212,10 @@
         </ul>
     </div>
 
-    <div id="scriptModal" class="fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop transition-opacity duration-300">
-        <div class="bg-dark-100 rounded-2xl p-8 w-full max-w-md mx-4 relative border border-dark-300 shadow-card transform transition-all duration-300">
+    <div id="scriptModal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop transition-opacity duration-300">
+        <div
+            class="bg-dark-100 rounded-2xl p-8 w-full max-w-md mx-4 relative border border-dark-300 shadow-card transform transition-all duration-300">
             <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
@@ -249,9 +264,9 @@ loadstring(game:HttpGet("https://luau.tech/build"))</code></pre>
                     class="text-gray-300 hover:text-custom-blue transition-colors flex items-center cursor-pointer">
                     <i data-lucide="layout-grid" class="w-5 h-5 mr-2"></i>Games
                 </a>
-                <a href="https://luau.tech/d"
-                    class="text-gray-300 hover:text-custom-blue transition-colors flex items-center">
-                    <i data-lucide="users" class="w-5 h-5 mr-2"></i>Community
+                <a id="premiumNavBar"
+                    class="text-gray-300 hover:text-yellow-400 transition-colors flex items-center cursor-pointer">
+                    <i data-lucide="crown" class="w-5 h-5 mr-2"></i>Premium
                 </a>
             </div>
         </div>
@@ -266,15 +281,16 @@ loadstring(game:HttpGet("https://luau.tech/build"))</code></pre>
             </a>
             <a href="https://luau.tech/d"
                 class="text-gray-300 hover:text-custom-blue transition-colors flex items-center">
-                <i data-lucide="users" class="w-5 h-5 mr-2"></i>Community
+                <i data-lucide="users" class="w-5 h-5 mr-2"></i>Premium
             </a>
         </div>
     </nav>
 
     <section
-    class="relative hero-gradient min-h-[87vh] flex flex-col justify-center items-center text-center px-4 py-8 overflow-hidden animate-fade-in-up">        
-    <div class="container mx-auto">
-            <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6 transition-all duration-500 group-hover:text-custom-blue group-hover:scale-[1.02] duration-700 delay-100 hover:text-custom-blue hover:scale-105">
+        class="relative hero-gradient min-h-[87vh] flex flex-col justify-center items-center text-center px-4 py-8 overflow-hidden animate-fade-in-up">
+        <div class="container mx-auto">
+            <h1
+                class="text-5xl md:text-6xl font-bold leading-tight mb-6 transition-all duration-500 group-hover:text-custom-blue group-hover:scale-[1.02] duration-700 delay-100 hover:text-custom-blue hover:scale-105">
                 Elevate Your <span class="text-custom-blue">Roblox</span> Gameplay
             </h1>
             <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-10 leading-relaxed">
@@ -291,9 +307,9 @@ loadstring(game:HttpGet("https://luau.tech/build"))</code></pre>
                 <a href="https://luau.tech/d" class="px-10 py-4 border-2 border-custom-blue text-custom-blue
                 rounded-xl hover:bg-custom-blue/10 transition-colors
                 font-bold text-lg flex items-center justify-center">
-                <i data-lucide="message-circle" class="w-6 h-6 mr-3"></i>
-                Join Community
-            </a>
+                    <i data-lucide="message-circle" class="w-6 h-6 mr-3"></i>
+                    Join Community
+                </a>
             </div>
         </div>
 
@@ -309,10 +325,11 @@ loadstring(game:HttpGet("https://luau.tech/build"))</code></pre>
     </section>
 
 
-    <div id = "scroll-section-divider1"class="section-divider"></div>
+    <div id="scroll-section-divider1" class="section-divider"></div>
 
     <div class="section-divider"></div>
-    <section id="supported-games" class="py-20 bg-dark-50 opacity-0 translate-y-10 transition-all duration-1000 ease-in-out">
+    <section id="supported-games"
+        class="py-20 bg-dark-50 opacity-0 translate-y-10 transition-all duration-1000 ease-in-out">
         <div class="container mx-auto px-4 lg:px-6">
             <div class="relative" data-carousel="true">
                 <div
@@ -353,7 +370,7 @@ loadstring(game:HttpGet("https://luau.tech/build"))</code></pre>
                             class="carousel-container flex transition-transform duration-300 ease-in-out relative  pb-8 md:px-4 lg:px-6">
                             <!-- Murder Mystery 2 Card -->
                             <div class="carousel-item shrink-0 snap-start snap-always mx-2" style="width: 400px;">
-                                <div class="card bg-dark-100 rounded-2xl  hover:rotate-1 p-7 border border-dark-300 
+                                <div class="card bg-dark-100 rounded-2xl p-7 border border-dark-300 
                             shadow-card hover:border-custom-blue/50 transition-all group">
                                     <div class="flex justify-between items-center mb-5">
                                         <div class="flex items-center">
@@ -501,12 +518,16 @@ loadstring(game:HttpGet("https://luau.tech/build"))</code></pre>
                                     <img src="game/images/toh_banner.webp" alt="Tower of Hell"
                                         class="w-full h-56 object-cover rounded-xl mb-7 overflow-hidden">
                                     <a href="https://www.roblox.com/games/1962086868/Tower-of-Hell" target="_blank"
-                                        class="text-2xl font-semibold mb-4 text-custom-blue hover:underline">Tower ofHell</a>
-                                        <p class="text-gray-300 mb-5 leading-relaxed h-12 line-clamp-2 
-                                        group relative cursor-help" title=" Use the script in any unsupported game or set ignoreGameCheck to true to gain access to unlimited universal features across different game modes.">
+                                        class="text-2xl font-semibold mb-4 text-custom-blue hover:underline">Tower
+                                        ofHell</a>
+                                    <p class="text-gray-300 mb-5 leading-relaxed h-12 line-clamp-2 
+                                        group relative cursor-help"
+                                        title=" Use the script in any unsupported game or set ignoreGameCheck to true to gain access to unlimited universal features across different game modes.">
                                         Use unsupported games or set ignoreGameCheck to unlock universal features!
-                                        <span class="hidden group-hover:block absolute z-10 bg-dark-100 border border-dark-300 p-2 rounded-lg shadow-lg left-0 right-0 -top-full">
-                                     Use the script in any unsupported game or set ignoreGameCheck to true to gain access to unlimited universal features across different game modes.
+                                        <span
+                                            class="hidden group-hover:block absolute z-10 bg-dark-100 border border-dark-300 p-2 rounded-lg shadow-lg left-0 right-0 -top-full">
+                                            Use the script in any unsupported game or set ignoreGameCheck to true to
+                                            gain access to unlimited universal features across different game modes.
                                         </span>
                                     </p>
                                     <ul class="text-sm text-gray-400 mb-6 space-y-2">
@@ -541,79 +562,169 @@ loadstring(game:HttpGet("https://luau.tech/build"))</code></pre>
                         class="hidden sm:block absolute top-0 right-0 bottom-0 w-24 bg-gradient-to-l from-[#121212] to-transparent pointer-events-none z-10">
                     </div>
                 </div>
+                <div id = "prem-navigate-section-divider"></div>
             </div>
     </section>
-
-    <div class="section-divider"></div>
     
+    <div class="section-divider"></div>
+
+    <section id="premium-section"
+        class="py-20 bg-dark-50 opacity-0 translate-y-10 transition-all duration-1000 ease-in-out">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-custom-blue font-bold text-4xl md:text-5xl mb-6 tracking-tight">
+                    Starry Premium
+                </h2>
+                <p class="text-gray-300 max-w-2xl mx-auto text-xl leading-relaxed">
+                    Unlock exclusive features and elevate your experience with our premium tiers.
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Free Tier -->
+                    <div
+                        class="bg-dark-100 rounded-2xl shadow-lg overflow-hidden border border-dark-300 transform transition-all hover:scale-105">
+                        <div class="p-8 text-center">
+                            <h3 class="text-2xl font-bold text-gray-200 mb-3">Free Tier</h3>
+                            <p class="text-gray-400 mb-4">Basic Access</p>
+                            <div class="text-5xl font-bold text-custom-blue mb-2">$0</div>
+                            <span class="text-gray-400 text-sm">Forever</span>
+                        </div>
+                        <div class="bg-dark-200/30 p-6">
+                            <ul class="space-y-4">
+                                <li class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i>
+                                    Basic Script Access
+                                </li>
+                                <li class="flex items-center text-gray-400">
+                                    <i data-lucide="x" class="w-5 h-5 text-red-500 mr-3"></i>
+                                    Limited Game Support
+                                </li>
+                                <li class="flex items-center text-gray-400">
+                                    <i data-lucide="x" class="w-5 h-5 text-red-500 mr-3"></i>
+                                    Standard Support
+                                </li>
+                                <li class="flex items-center text-gray-400">
+                                    <i data-lucide="x" class="w-5 h-5 text-red-500 mr-3"></i>
+                                    Key System
+                                </li>
+                            </ul>
+                            <a href="#" class="mt-6 block px-6 py-3 bg-dark-300 text-gray-300 
+                                rounded-lg hover:bg-dark-400 transition-colors 
+                                text-center font-semibold">
+                                Current Plan
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Premium Tier -->
+                    <div
+                        class="bg-gradient-to-br from-custom-blue/10 to-custom-accent/10 
+                        rounded-2xl shadow-2xl overflow-hidden border-2 border-custom-blue/30 relative transform transition-all hover:scale-105">
+                        <div class="absolute top-4 right-4 bg-custom-blue text-dark-50 px-3 py-1 rounded-full text-xs">
+                            Recommended
+                        </div>
+                        <div class="p-8 text-center">
+                            <h3 class="text-2xl font-bold text-custom-blue mb-3">Lifetime Premium</h3>
+                            <p class="text-gray-400 mb-4">Unlimited Access</p>
+                            <div class="text-5xl font-bold text-custom-blue mb-2">$6.99</div>
+                            <span class="text-gray-400 text-sm">One-time Payment</span>
+                        </div>
+                        <div class="bg-custom-blue/10 p-6">
+                            <ul class="space-y-4">
+                                <li class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-5 h-5 text-custom-blue mr-3"></i>
+                                    Full Script Access
+                                </li>
+                                <li class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-5 h-5 text-custom-blue mr-3"></i>
+                                    All Game Script Support
+                                </li>
+                                <li class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-5 h-5 text-custom-blue mr-3"></i>
+                                    No Key System
+                                </li>
+                                <li class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-5 h-5 text-custom-blue mr-3"></i>
+                                    And more!
+                                </li>
+                            </ul>
+                            <a href="#" class="mt-6 block px-6 py-3 bg-custom-blue text-dark-50 
+                                rounded-lg hover:bg-custom-blue/90 transition-colors 
+                                text-center font-semibold">
+                                Upgrade to Lifetime
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
     <footer class="bg-gradient-to-r from-gray-900 to-gray-800 py-12 border-t border-gray-700 animate-fade-in-up">
         <div class="container mx-auto px-4 lg:px-6 max-w-6xl">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                 <!-- Logo Section -->
-                <div class="flex flex-col items-center md:items-start space-y-3 hover:-translate-y-1 transition-transform duration-300">
+                <div
+                    class="flex flex-col items-center md:items-start space-y-3 hover:-translate-y-1 transition-transform duration-300">
                     <div class="flex items-center space-x-3 group">
-                        <img src="icon.png" alt="Starry Logo" class="w-12 h-12 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-2xl font-black text-white tracking-tight group-hover:text-custom-blue transition-colors duration-300">Starry</span>
+                        <img src="icon.png" alt="Starry Logo"
+                            class="w-12 h-12 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <span
+                            class="text-2xl font-black text-white tracking-tight group-hover:text-custom-blue transition-colors duration-300">Starry</span>
                     </div>
                     <p class="text-gray-400 text-sm text-center md:text-left"></p>
                     <div className="text-gray-500 text-sm hover:opacity-100 transition-opacity duration-300">
                         © 2024 Starry Project. All Rights Reserved.
                     </div>
                 </div>
-    
+
                 <!-- Quick Links Section -->
                 <div class="flex justify-center space-x-6">
                     <div class="flex flex-col space-y-2">
                         <h4 class="text-white font-semibold mb-2">Quick Links</h4>
                         <a href="/terms-of-service"
-                           class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
+                            class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
                             Terms of Service
                         </a>
                         <a href="/terms-of-service/#Privacy-Policy"
-                           class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
+                            class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
                             Privacy Policy
                         </a>
                         <a href="https://luau.tech/d"
-                           class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
+                            class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
                             Contact Us
                         </a>
                     </div>
                 </div>
-    
+
                 <!-- Social Links Section -->
                 <div class="flex flex-col items-center md:items-end space-y-3">
                     <div class="flex space-x-4">
-                        <a href="https://luau.tech/d"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="text-grey-100 hover:text-neutral-200 
+                        <a href="https://luau.tech/d" target="_blank" rel="noopener noreferrer" class="text-grey-100 hover:text-neutral-200 
                                   transform transition-all duration-300 ease-in-out 
                                   hover:-translate-y-1 hover:scale-110 
                                   hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] 
-                                  active:scale-95 group"
-                           aria-label="Visit Discord Website">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 24 24"
-                                 fill="currentColor"
-                                 class="w-8 h-8 transition-transform duration-300 group-hover:rotate-6">
-                                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0787.0371c-.211.3765-.4447.8651-.6083 1.2493-1.8558-.2784-3.7098-.2784-5.5234 0-.1636-.3842-.4029-.8728-.6171-1.2493a.077.077 0 00-.0787-.0371 19.7161 19.7161 0 00-4.8851 1.5152.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8734-1.2952 1.2305-1.9967a.076.076 0 00-.0416-.1062c-.6528-.2476-1.2743-.5495-1.8722-.8905a.077.077 0 01-.0076-.1276c.1258-.0941.2516-.1926.3714-.2914a.0743.0743 0 01.0784-.0105c3.9262 1.7909 8.1766 1.7909 12.0551 0a.0739.0739 0 01.0788.0105c.1198.0988.246.1973.3718.2914a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.8728.8905.0762.0762 0 00-.0407.1062c.3611.7015.7729 1.3663 1.2309 1.9967a.0761.0761 0 00.0842.0276c1.9581-.6066 3.9466-1.5218 6.0006-3.0294a.0761.0761 0 00.0313-.0561c.4848-5.1766-.8104-9.6616-3.4211-13.6674a.0608.0608 0 00-.0314-.0277zM8.02 15.3312c-1.1412 0-2.0782-1.0487-2.0782-2.3415 0-1.2929.9223-2.3415 2.0782-2.3415 1.1676 0 2.0999 1.0486 2.0781 2.3415 0 1.2928-.9105 2.3415-2.0781 2.3415zm7.9373 0c-1.1412 0-2.0782-1.0487-2.0782-2.3415 0-1.2929.9223-2.3415 2.0782-2.3415 1.1676 0 2.0999 1.0486 2.0781 2.3415 0 1.2928-.9105 2.3415-2.0781 2.3415z"/>
+                                  active:scale-95 group" aria-label="Visit Discord Website">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-8 h-8 transition-transform duration-300 group-hover:rotate-6">
+                                <path
+                                    d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0787.0371c-.211.3765-.4447.8651-.6083 1.2493-1.8558-.2784-3.7098-.2784-5.5234 0-.1636-.3842-.4029-.8728-.6171-1.2493a.077.077 0 00-.0787-.0371 19.7161 19.7161 0 00-4.8851 1.5152.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8734-1.2952 1.2305-1.9967a.076.076 0 00-.0416-.1062c-.6528-.2476-1.2743-.5495-1.8722-.8905a.077.077 0 01-.0076-.1276c.1258-.0941.2516-.1926.3714-.2914a.0743.0743 0 01.0784-.0105c3.9262 1.7909 8.1766 1.7909 12.0551 0a.0739.0739 0 01.0788.0105c.1198.0988.246.1973.3718.2914a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.8728.8905.0762.0762 0 00-.0407.1062c.3611.7015.7729 1.3663 1.2309 1.9967a.0761.0761 0 00.0842.0276c1.9581-.6066 3.9466-1.5218 6.0006-3.0294a.0761.0761 0 00.0313-.0561c.4848-5.1766-.8104-9.6616-3.4211-13.6674a.0608.0608 0 00-.0314-.0277zM8.02 15.3312c-1.1412 0-2.0782-1.0487-2.0782-2.3415 0-1.2929.9223-2.3415 2.0782-2.3415 1.1676 0 2.0999 1.0486 2.0781 2.3415 0 1.2928-.9105 2.3415-2.0781 2.3415zm7.9373 0c-1.1412 0-2.0782-1.0487-2.0782-2.3415 0-1.2929.9223-2.3415 2.0782-2.3415 1.1676 0 2.0999 1.0486 2.0781 2.3415 0 1.2928-.9105 2.3415-2.0781 2.3415z" />
                             </svg>
                         </a>
-                        <a href="https://rscripts.net/@starry"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="text-neutral-500 hover:text-neutral-200 
+                        <a href="https://rscripts.net/@starry" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-200 
                                   transform transition-all duration-300 ease-in-out 
                                   hover:-translate-y-1 hover:scale-110 
                                   hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] 
-                                  active:scale-95 group"
-                           aria-label="Visit RScripts Profile">
-                            <img src="./images/rscripts-logo-rawpng.png"
-                                 alt="RScripts"
-                                 class="w-7 h-7 transition-transform duration-300 group-hover:rotate-6">
+                                  active:scale-95 group" aria-label="Visit RScripts Profile">
+                            <img src="./images/rscripts-logo-rawpng.png" alt="RScripts"
+                                class="w-7 h-7 transition-transform duration-300 group-hover:rotate-6">
                         </a>
                     </div>
-                   
+
                 </div>
             </div>
         </div>
@@ -622,27 +733,29 @@ loadstring(game:HttpGet("https://luau.tech/build"))</code></pre>
     <script src="./file/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-          const section = document.getElementById('supported-games');
-      
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.remove('opacity-0', 'translate-y-10');
-                  entry.target.classList.add('opacity-100', 'translate-y-0');
-                } else {
-                  entry.target.classList.remove('opacity-100', 'translate-y-0');
-                  entry.target.classList.add('opacity-0', 'translate-y-10');
+            const section = document.getElementById('supported-games');
+            const premiumSection = document.getElementById('premium-section');
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.remove('opacity-0', 'translate-y-10');
+                            entry.target.classList.add('opacity-100', 'translate-y-0');
+                        } else {
+                            entry.target.classList.remove('opacity-100', 'translate-y-0');
+                            entry.target.classList.add('opacity-0', 'translate-y-10');
+                        }
+                    });
+                },
+                {
+                    threshold: 0.3
                 }
-              });
-            },
-            {
-              threshold: 0.3 
-            }
-          );
-      
-          observer.observe(section);
+            );
+
+            observer.observe(section);
+            observer.observe(premiumSection);
         });
-      </script>
+    </script>
 </body>
 </html>
