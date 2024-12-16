@@ -930,27 +930,6 @@ observer.observe(contributorsSection);
         });
     </script>
   
-  <script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    let scrollTimeout;
-    const scrollSpeed = 2;
-
-    function smoothScroll(event) {
-      if (scrollTimeout) {
-        window.cancelAnimationFrame(scrollTimeout);
-      }
-      scrollTimeout = window.requestAnimationFrame(() => {
-        window.scrollBy({
-          top: event.deltaY * scrollSpeed,
-          left: 0,
-          behavior: 'smooth'
-        });
-      });
-    }
-
-    document.addEventListener('wheel', smoothScroll, { passive: true });
-  });
-</script>
 
   
   
