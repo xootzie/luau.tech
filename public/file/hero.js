@@ -3,7 +3,7 @@
             let isScrolledDown = false;
 
             const scriptModal = document.getElementById('scriptModal');
-            const getStartedBtn = document.querySelector('a[href="#"].px-10.py-4.bg-custom-blue');
+            const getStartedBtn = document.getElementById('getStartedBtn');
             const closeModalBtn = document.getElementById('closeModal');
             const dismissModalBtn = document.getElementById('dismissModal');
             const copyScriptBtn = document.getElementById('copyScript');
