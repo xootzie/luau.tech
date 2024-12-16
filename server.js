@@ -41,6 +41,12 @@ const setupRoutes = async () => {
   const versionSearchRoute = require('./private/api/roblox/version/search.js');
   const arrayValidateRoute = require('./private/api/text/arrayValidate.js');
   const taxCalculatorRoute = require('./private/api/roblox/utility/robuxTaxCalc.js');
+  
+  app.get('/build', (req, res) => {
+    res.type('text/plain');
+    res.sendFile(path.join(__dirname, 'private', 'api', 'development', 'loader'));
+  });
+
 
   app.post('/api/array/validate', arrayValidateRoute.arrayValidateHandler);
   app.get('/api/text/asciify', asciiRoute.asciiHandler);
