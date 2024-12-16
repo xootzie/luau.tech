@@ -4,6 +4,7 @@ const mobileNavigationMenu = document.getElementById('mobileMenu');
 const mobileGameNavigationBar = document.getElementById('mobileGameNavBar');
 const gamesNavigationButton = document.getElementById('gameNavBar');
 const mobilePremiumNavBar = document.getElementById('mobilePremiumNavBar');
+const premiumNavBar = document.getElementById('premiumNavBar');
 // Sections
 const supportedGamesSectionContainer = document.getElementById('supported-games');
 const premiumNavigationBar = document.getElementById('premiumNavBar');
@@ -24,6 +25,10 @@ hamburgerMenuToggle.addEventListener('click', () => {
 });
 
 mobilePremiumNavBar.addEventListener('click', () => {
+    premiumSectionDivider.scrollIntoView({ behavior: 'smooth' });
+});
+
+premiumNavBar.addEventListener('click', () => {
     premiumSectionDivider.scrollIntoView({ behavior: 'smooth' });
 });
 
