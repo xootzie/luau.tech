@@ -2,17 +2,10 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs').promises;
 const app = express();
+const fetch = require('node-fetch');
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-
-
-
-app.get('/build', (req, res) => {
-  res.type('text/plain');
-  res.sendFile(path.join(__dirname, 'private', 'api', 'development', 'loader'));
-});
-
 
 async function serveErrorPage(res, errorCode, errorMessage) {
   try {
@@ -48,9 +41,6 @@ const setupRoutes = async () => {
   const versionSearchRoute = require('./private/api/roblox/version/search.js');
   const arrayValidateRoute = require('./private/api/text/arrayValidate.js');
   const taxCalculatorRoute = require('./private/api/roblox/utility/robuxTaxCalc.js');
-  const sendApxRoute = require('./private/api/discord/sendapx.js');
-
-
 
   app.post('/api/array/validate', arrayValidateRoute.arrayValidateHandler);
   app.get('/api/text/asciify', asciiRoute.asciiHandler);
@@ -58,9 +48,47 @@ const setupRoutes = async () => {
   app.get('/api/roblox/executors/list', executorListRoute.robloxListHandler);
   app.get('/api/roblox/executors/search', executorSearchRoute.executorSearchHandler);
   app.get('/api/roblox/version/search', versionSearchRoute.versionSearchHandler);
-  app.post('/api/discord/send-apx', sendApxRoute.sendApxHandler);
-
 };
+
+
+app.get('/api/discord/getinfo', async (req, res) => {
+  try {
+      const userId = req.query.id;
+
+      if (!userId) {
+          return res.status(400).json({ 
+              error: 'User ID is required',
+              message: 'Please provide a valid Discord user ID in the query parameter'
+          });
+      }
+
+      const response = await fetch(`https://aurix.luau.tech/api/discord-user/${userId}`);
+      
+      if (!response.ok) {
+          return res.status(response.status).json({
+              error: 'Failed to fetch user details',
+              status: response.status,
+              statusText: response.statusText
+          });
+      }
+      const userData = await response.json();
+
+      res.set({
+          'Access-Control-Allow-Origin': '*', 
+          'Access-Control-Allow-Methods': 'GET',
+          'Content-Type': 'application/json'
+      });
+
+      res.json(userData);
+
+  } catch (error) {
+      console.error('Discord User Info Error:', error);
+      res.status(500).json({
+          error: 'Internal Server Error',
+          message: error.message
+      });
+  }
+});
 
 const setupErrorHandlers = () => {
   app.use(async (req, res) => {
@@ -76,14 +104,12 @@ const setupErrorHandlers = () => {
 };
 
 const start = async () => {
-
-
   setupRoutes();
   setupErrorHandlers();
  
   const port = process.env.PORT || 3001;
   app.listen(port, () => {
-    console.log(`Server running http://localhost:${port}`);
+    console.log(`Server running on http://localhost:${port}`);
   });
 };
 
