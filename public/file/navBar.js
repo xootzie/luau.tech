@@ -6,7 +6,7 @@ const gamesNavigationButton = document.getElementById('gameNavBar');
 const mobilePremiumNavBar = document.getElementById('mobilePremiumNavBar');
 const premiumNavBar = document.getElementById('premiumNavBar');
 // Sections
-const supportedGamesSectionContainer = document.getElementById('supported-games');
+const supportedGamesSectionContainer = document.getElementById('scrollDownIndicator');
 const premiumNavigationBar = document.getElementById('premiumNavBar');
 const premiumSectionDivider = document.getElementById('prem-navigate-section-divider');
 

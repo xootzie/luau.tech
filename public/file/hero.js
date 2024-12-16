@@ -1,4 +1,4 @@
-            const supportedGamesSection = document.getElementById('scroll-section-divider1');
+            const supportedGamesSection = document.getElementById('scrollDownIndicator');
             const scrollDownIndicator = document.getElementById('scrollDownIndicator');
             let isScrolledDown = false;
 
