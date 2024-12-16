@@ -573,101 +573,146 @@ class="hidden lg:hidden absolute top-full left-0 right-0 z-50 flex-col space-y-4
     </section>
     
     <div class="section-divider"></div>
-
+    
     <section id="premium-section"
-        class="py-20 bg-dark-50 opacity-0 translate-y-10 transition-all duration-1000 ease-in-out">
-        <div class="container mx-auto px-4 lg:px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-custom-blue font-bold text-4xl md:text-5xl mb-6 tracking-tight">
-                    Starry Premium
-                </h2>
-                <p class="text-gray-300 max-w-2xl mx-auto text-xl leading-relaxed">
-                    Unlock exclusive features and elevate your experience with our premium tiers.
-                </p>
-            </div>
+    class="py-20 bg-dark-50 opacity-0 translate-y-10 transition-all duration-1000 ease-in-out">
+    <div class="container mx-auto px-4 lg:px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-custom-blue font-bold text-4xl md:text-5xl mb-6 tracking-tight">
+                Starry Premium
+            </h2>
+            <p class="text-gray-300 max-w-2xl mx-auto text-xl leading-relaxed">
+                Unlock exclusive features and elevate your experience with our premium tiers.
+            </p>
+        </div>
 
-            <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Free Tier -->
-                    <div
-                        class="bg-dark-100 rounded-2xl shadow-lg overflow-hidden border border-dark-300 transform transition-all hover:scale-105">
-                        <div class="p-8 text-center">
-                            <h3 class="text-2xl font-bold text-gray-200 mb-3">Free Tier</h3>
-                            <p class="text-gray-400 mb-4">Basic Access</p>
-                            <div class="text-5xl font-bold text-custom-blue mb-2">$0</div>
-                            <span class="text-gray-400 text-sm">Forever</span>
-                        </div>
-                        <div class="bg-dark-200/30 p-6">
-                            <ul class="space-y-4">
-                                <li class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i>
-                                    Basic Script Access
-                                </li>
-                                <li class="flex items-center text-gray-400">
-                                    <i data-lucide="x" class="w-5 h-5 text-red-500 mr-3"></i>
-                                    Limited Game Support
-                                </li>
-                                <li class="flex items-center text-gray-400">
-                                    <i data-lucide="x" class="w-5 h-5 text-red-500 mr-3"></i>
-                                    Standard Support
-                                </li>
-                                <li class="flex items-center text-gray-400">
-                                    <i data-lucide="x" class="w-5 h-5 text-red-500 mr-3"></i>
-                                    Key System
-                                </li>
-                            </ul>
-                            <a href="#" class="mt-6 block px-6 py-3 bg-dark-300 text-gray-300 
-                                rounded-lg hover:bg-dark-400 transition-colors 
-                                text-center font-semibold">
-                                Current Plan
-                            </a>
-                        </div>
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Free Tier -->
+                <div
+                    class="bg-dark-100 rounded-2xl shadow-lg overflow-hidden border border-dark-300 transform transition-all hover:scale-105 md:self-center">
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-bold text-gray-200 mb-3">Free Tier</h3>
+                        <p class="text-gray-400 mb-4">Basic Access</p>
+                        <div class="text-5xl font-bold text-custom-blue mb-2">$0</div>
+                        <span class="text-gray-400 text-sm">Forever</span>
                     </div>
+                    <div class="bg-dark-200/30 p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center text-gray-300">
+                                <i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i>
+                                Basic Script Access
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i data-lucide="x" class="w-5 h-5 text-red-500 mr-3"></i>
+                                Limited Game Support
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i data-lucide="x" class="w-5 h-5 text-red-500 mr-3"></i>
+                                Standard Support
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i data-lucide="x" class="w-5 h-5 text-red-500 mr-3"></i>
+                                Key System
+                            </li>
+                        </ul>
+                        <a href="#" class="mt-6 block px-6 py-3 bg-dark-300 text-gray-300 
+                            rounded-lg hover:bg-dark-400 transition-colors 
+                            text-center font-semibold">
+                            Current Plan
+                        </a>
+                    </div>
+                </div>
 
-                    <!-- Premium Tier -->
-                    <div
-                        class="bg-gradient-to-br from-custom-blue/10 to-custom-accent/10 
-                        rounded-2xl shadow-2xl overflow-hidden border-2 border-custom-blue/30 relative transform transition-all hover:scale-105">
-                        <div class="absolute top-4 right-4 bg-custom-blue text-dark-50 px-3 py-1 rounded-full text-xs">
-                            Recommended
-                        </div>
-                        <div class="p-8 text-center">
-                            <h3 class="text-2xl font-bold text-custom-blue mb-3">Lifetime Premium</h3>
-                            <p class="text-gray-400 mb-4">Unlimited Access</p>
-                            <div class="text-5xl font-bold text-custom-blue mb-2">$6.99</div>
-                            <span class="text-gray-400 text-sm">One-time Payment</span>
-                        </div>
-                        <div class="bg-custom-blue/10 p-6">
-                            <ul class="space-y-4">
-                                <li class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-5 h-5 text-custom-blue mr-3"></i>
-                                    Full Script Access
-                                </li>
-                                <li class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-5 h-5 text-custom-blue mr-3"></i>
-                                    All Game Script Support
-                                </li>
-                                <li class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-5 h-5 text-custom-blue mr-3"></i>
-                                    No Key System
-                                </li>
-                                <li class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-5 h-5 text-custom-blue mr-3"></i>
-                                    And more!
-                                </li>
-                            </ul>
-                            <a href="#" class="mt-6 block px-6 py-3 bg-custom-blue text-dark-50 
-                                rounded-lg hover:bg-custom-blue/90 transition-colors 
-                                text-center font-semibold">
-                                Upgrade to Lifetime
-                            </a>
-                        </div>
-                        
+                <!-- Premium Tier - Larger and More Prominent -->
+                <div
+                    class="bg-gradient-to-br from-custom-blue/10 to-custom-accent/10 
+                    rounded-2xl shadow-2xl overflow-hidden border-2 border-custom-blue/30 relative transform transition-all 
+                    hover:scale-110 z-10 md:row-span-2 md:self-start scale-105">
+                    <div class="absolute top-2 right-4 bg-custom-blue text-dark-50 px-3 py-1 rounded-full text-xs">
+                        Best Value
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-bold text-custom-blue mb-3">Lifetime Premium</h3>
+                        <p class="text-gray-400 mb-4">Unlimited Access</p>
+                        <div class="text-5xl font-bold text-custom-blue mb-2">$6.99</div>
+                        <span class="text-gray-400 text-sm">One-time Payment</span>
+                    </div>
+                    <div class="bg-custom-blue/10 p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center text-gray-300">
+                                <i data-lucide="check" class="w-5 h-5 text-custom-blue mr-3"></i>
+                                Full Script Access
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i data-lucide="check" class="w-5 h-5 text-custom-blue mr-3"></i>
+                                All Game Script Support
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i data-lucide="check" class="w-5 h-5 text-custom-blue mr-3"></i>
+                                No Key System
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i data-lucide="check" class="w-5 h-5 text-custom-blue mr-3"></i>
+                                And more!
+                            </li>
+                        </ul>
+                        <a href="#" class="mt-6 block px-6 py-3 bg-custom-blue text-dark-50 
+                            rounded-lg hover:bg-custom-blue/90 transition-colors 
+                            text-center font-semibold">
+                            Upgrade to Lifetime
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Server Boost Tier -->
+                <div
+                    class="bg-gradient-to-br from-[#7289da]/10 to-[#5865f2]/10 
+                    rounded-2xl shadow-2xl overflow-hidden border-2 border-[#7289da]/30 relative transform transition-all 
+                    hover:scale-105 md:self-center">
+                    
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-bold text-[#5865f2] mb-3">Server Boost</h3>
+                        <p class="text-gray-400 mb-4">Community Support</p>
+                        <div class="text-5xl font-bold text-[#5865f2] mb-2">$4.99</div>
+                        <span class="text-gray-400 text-sm">Monthly</span>
+                    </div>
+                    <div class="bg-[#5865f2]/10 p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center text-gray-300">
+                                <i data-lucide="check" class="w-5 h-5 text-[#5865f2] mr-3"></i>
+                                Sneak Peaks
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i data-lucide="check" class="w-5 h-5 text-[#5865f2] mr-3"></i>
+                                Booster Role
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i data-lucide="check" class="w-5 h-5 text-[#5865f2] mr-3"></i>
+                                No Key System
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i data-lucide="check" class="w-5 h-5 text-[#5865f2] mr-3"></i>
+                                Priority Support
+                            </li>
+                        </ul> <a href="/d" class="mt-6 block px-6 py-3 bg-[#5865f2] text-white 
+                            rounded-lg hover:bg-[#5865f2]/90 transition-colors 
+                            text-center font-semibold">
+                            Join Server
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
+
+
+
+
+
     
     <div class="section-divider"></div>
     <footer class="bg-gradient-to-r from-gray-900 to-gray-800 py-12 border-t border-gray-700 animate-fade-in-up">
@@ -761,6 +806,8 @@ class="hidden lg:hidden absolute top-full left-0 right-0 z-50 flex-col space-y-4
 
             observer.observe(section);
             observer.observe(premiumSection);
+            const contributorsSection = document.getElementById('contributors-section');
+observer.observe(contributorsSection);
         });
     </script>
 </body>
