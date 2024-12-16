@@ -1,29 +1,35 @@
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
-const mobileMenu = document.getElementById('mobileMenu');
-const gameNavBar = document.getElementById('mobileGameNavBar');
-const gamesNavBarButton = document.getElementById('gameNavBar');
-const supportedGamesSection = document.getElementById('supported-games');
-const premiumNavBar = document.getElementById('premiumNavBar');
-const premiumSection = document.getElementById('prem-navigate-section-divider');
+const hamburgerMenuToggle = document.getElementById('hamburger');
+const navigationMenu = document.getElementById('navMenu');
+const mobileNavigationMenu = document.getElementById('mobileMenu');
+const mobileGameNavigationBar = document.getElementById('mobileGameNavBar');
+const gamesNavigationButton = document.getElementById('gameNavBar');
+const mobilePremiumNavBar = document.getElementById('mobilePremiumNavBar');
+// Sections
+const supportedGamesSectionContainer = document.getElementById('supported-games');
+const premiumNavigationBar = document.getElementById('premiumNavBar');
+const premiumSectionDivider = document.getElementById('prem-navigate-section-divider');
 
-navMenu.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    mobileMenu.classList.toggle('flex');
-    premiumSection.scrollIntoView({ behavior: 'smooth' });
+navigationMenu.addEventListener('click', () => {
+    mobileNavigationMenu.classList.toggle('hidden');
+    mobileNavigationMenu.classList.toggle('flex');
+    premiumSectionDivider.scrollIntoView({ behavior: 'smooth' });
 });
 
-gamesNavBarButton.addEventListener('click', () => {
-    supportedGamesSection.scrollIntoView({ behavior: 'smooth' });
+gamesNavigationButton.addEventListener('click', () => {
+    supportedGamesSectionContainer.scrollIntoView({ behavior: 'smooth' });
 });
 
-hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    mobileMenu.classList.toggle('flex');
+hamburgerMenuToggle.addEventListener('click', () => {
+    mobileNavigationMenu.classList.toggle('hidden');
+    mobileNavigationMenu.classList.toggle('flex');
 });
 
-gameNavBar.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
-    mobileMenu.classList.remove('flex');
-    supportedGamesSection.scrollIntoView({ behavior: 'smooth' });
+mobilePremiumNavBar.addEventListener('click', () => {
+    premiumSectionDivider.scrollIntoView({ behavior: 'smooth' });
+});
+
+mobileGameNavigationBar.addEventListener('click', () => {
+    mobileNavigationMenu.classList.add('hidden');
+    mobileNavigationMenu.classList.remove('flex');
+    supportedGamesSectionContainer.scrollIntoView({ behavior: 'smooth' });
 });
