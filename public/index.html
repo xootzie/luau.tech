@@ -220,9 +220,16 @@
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
             <h2 class="text-2xl font-bold mb-4 text-custom-blue">Get Started</h2>
-            <div class="bg-dark-200 rounded-lg p-4 mb-6">
-                <pre class="text-sm text-gray-300 overflow-x-auto"><code>getgenv().ignoreGameCheck = false
-loadstring(game:HttpGet("https://luau.tech/build"))</code></pre>
+            <div class="bg-dark-200 rounded-lg p-4 mb-6 transition-all duration-300 ease-in-out transform hover:scale-[1.02] focus-within:scale-[1.02]">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-white text-xs font-medium bg-custom-blue px-2 py-1 rounded-md">
+                        Luau
+                    </span>
+                </div>
+                <pre class="text-xs text-gray-300 overflow-x-auto whitespace-wrap break-words animate-fade-in">
+<code><span class="text-custom-blue">getgenv()</span>.ignoreGameCheck = <span class="text-custom-accent">false</span>
+<span class="text-custom-blue">loadstring</span>(<span class="text-custom-accent">game</span>:<span class="text-custom-blue">HttpGet</span>(<span class="text-[#82a7fb]">"https://luau.tech/build"</span>))()</code>
+                    </pre>
             </div>
             <div class="flex space-x-4">
                 <button id="copyScript" class="flex-1 px-6 py-3 bg-custom-blue text-dark-50 
