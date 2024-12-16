@@ -10,14 +10,12 @@
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  
   "keywords": [
     "web",
     "application",
     "express",
     "backend"
   ],
-  
   "author": "Your Name",
   "license": "ISC",
   "dependencies": {
