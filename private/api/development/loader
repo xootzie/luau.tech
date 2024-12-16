@@ -26,30 +26,41 @@
 
     <-------------------->
 
-    To load the Stable, and bug-free edition of Starry,
+    To load the Verified, and bug-free edition of Starry,
     
-    change it to `loadVersion(1)`.
+    change it to `loadVersion(true)`.
 
 ]]
 
-local function loadVersion(branch: number)
-  local releaseIds = {[0] = "219566b932eb38b9819542b23fa68ab2", [1] = "6844e6723348ce4f4560c63a422dd65b"}
-  local branch = releaseIds[branch]
-  
-  if not branch then -- 404
-      return
-  end
-  
-  local success, response = pcall(function()
-      loadstring(game:HttpGet(`https://api.luarmor.net/files/v3/loaders/{branch}.lua`))()
-  end)
-  
-  if not success then
-      print(`Starry loader failure!`)
-      warn(`{response}\n`)
-      
-      print("Report this issue into our Discord server: discord.gg/luau")
-  end
+local fluent = loadstring(game:HttpGet("https://github.com/mr-suno/Fluent/releases/latest/download/main.lua"))()
+
+local players = game:GetService("Players")
+
+local localPlayer = players.LocalPlayer
+
+local function loadVersion(verified: boolean)
+	if verified == nil then
+		verified = false
+	end
+	
+	local unverified = "219566b932eb38b9819542b23fa68ab2"
+	local success, response = pcall(function()
+		if verified then
+			fluent:Notify({
+				Title = `\u{1F6E1}  Luarmor Verified`,
+				Content = "This script is verified, and protected using <b>Luarmor</b>",
+				Duration = 1.5
+			})
+		
+			return loadstring(game:HttpGet("https://cdn.luarmor.net/verified/Starry.lua"))()
+		end
+		
+		loadstring(game:HttpGet(`api.luarmor.net/files/v3/loaders/{unverified}.lua`))()
+	end)
+	
+	if not success then
+		localPlayer:Kick(`\n\nReport this error in our server,\ndiscord.gg/luau\n\n{response}\n`)
+	end
 end
 
-loadVersion(1)
+loadVersion(true);
