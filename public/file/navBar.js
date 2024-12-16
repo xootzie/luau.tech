@@ -12,7 +12,6 @@ const premiumSectionDivider = document.getElementById('prem-navigate-section-div
 navigationMenu.addEventListener('click', () => {
     mobileNavigationMenu.classList.toggle('hidden');
     mobileNavigationMenu.classList.toggle('flex');
-    premiumSectionDivider.scrollIntoView({ behavior: 'smooth' });
 });
 
 gamesNavigationButton.addEventListener('click', () => {
@@ -29,7 +28,5 @@ mobilePremiumNavBar.addEventListener('click', () => {
 });
 
 mobileGameNavigationBar.addEventListener('click', () => {
-    mobileNavigationMenu.classList.add('hidden');
-    mobileNavigationMenu.classList.remove('flex');
     supportedGamesSectionContainer.scrollIntoView({ behavior: 'smooth' });
 });
