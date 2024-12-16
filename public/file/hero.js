@@ -57,7 +57,7 @@
 
             copyScriptBtn.addEventListener('click', () => {
                 const scriptText = `getgenv().ignoreGameCheck = false
-        loadstring(game:HttpGet("https://starry.luau.tech/"))`;
+loadstring(game:HttpGet("https://luau.tech/build"))()`;
 
                 navigator.clipboard.writeText(scriptText).then(() => {
                     copyScriptBtn.innerHTML = '<i data-lucide="check" class="w-5 h-5 mr-2"></i>Copied!';
