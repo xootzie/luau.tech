@@ -35,32 +35,56 @@
 local fluent = loadstring(game:HttpGet("https://github.com/mr-suno/Fluent/releases/latest/download/main.lua"))()
 
 local players = game:GetService("Players")
+local logService = game:GetService("LogService")
 
 local localPlayer = players.LocalPlayer
 
+local luarmorIssue = false -- Triggers to True if Luarmor experiences loading errors
+
 local function loadVersion(verified: boolean)
-	if verified == nil then
-		verified = false
-	end
-	
-	local unverified = "219566b932eb38b9819542b23fa68ab2"
-	local success, response = pcall(function()
-		if verified then
-			fluent:Notify({
-				Title = `\u{1F6E1}  Luarmor Verified`,
-				Content = "This script is verified, and protected using <b>Luarmor</b>",
-				Duration = 1.5
-			})
-		
-			return loadstring(game:HttpGet("https://cdn.luarmor.net/verified/Starry.lua"))()
-		end
-		
-		loadstring(game:HttpGet(`api.luarmor.net/files/v3/loaders/{unverified}.lua`))()
-	end)
-	
-	if not success then
-		localPlayer:Kick(`\n\nReport this error in our server,\ndiscord.gg/luau\n\n{response}\n`)
-	end
+    logService:ClearOutput()
+
+    if verified == nil then
+        verified = false
+    end
+    
+    local unverified = "219566b932eb38b9819542b23fa68ab2"
+    local success, response = pcall(function()
+        if verified then
+            fluent:Notify({
+                Title = `\u{1F6E1}  Luarmor Verified`,
+                Content = "This script is verified, and protected using <b>Luarmor</b>",
+                Duration = 1.5
+            })
+        
+            return loadstring(game:HttpGet("https://cdn.luarmor.net/verified/Starry.lua"))()
+        end
+        
+        loadstring(game:HttpGet(`api.luarmor.net/files/v3/loaders/{unverified}.lua`))()
+    end)
+
+    task.wait(0.5)
+    
+    if success ~= nil then
+        local warns = {}
+        local logs = logService:GetLogHistory()
+        
+        for _, log in pairs(logs) do
+            if log.messageType == Enum.MessageType.MessageWarning then
+                table.insert(warns, log.message)    
+            end
+        end
+        
+        for _, warning in pairs(warns) do
+            if string.find(warning, "Err:nil") then
+                luarmorIssue = true
+            end
+        end
+    end
+    
+    if not success or luarmorIssue then
+        localPlayer:Kick(`\n\nReport this error in our server,\ndiscord.gg/luau\n\n{response}\n\nKeep in mind, your executor may not be supported\n`)
+    end
 end
 
-loadVersion(true);
+loadVersion(true)
