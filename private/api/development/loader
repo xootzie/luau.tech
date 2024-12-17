@@ -1,3 +1,4 @@
+
 --[[
 
                  ___                                                  
@@ -26,9 +27,9 @@
 
     <-------------------->
 
-    To load the Verified, and bug-free edition of Starry,
+    To load the Stable, and bug-free edition of Starry,
     
-    change it to `loadVersion(true)`.
+    change it to `loadVersion(1)`.
 
 ]]
 
@@ -80,10 +81,12 @@ local function loadVersion(verified: boolean)
                 luarmorIssue = true
             end
         end
+
+        print(luarmorIssue)
     end
     
     if not success or luarmorIssue then
-        localPlayer:Kick(`\n\nReport this error in our server,\ndiscord.gg/luau\n\n{response}\n\nKeep in mind, your executor may not be supported\n`)
+        localPlayer:Kick(`\n\nReport this error in our server,\ndiscord.gg/luau\n\n{response}\n`)
     end
 end
 
