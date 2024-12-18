@@ -90,4 +90,5 @@ local function loadVersion(verified: boolean)
     end
 end
 
-loadVersion(true)
+loadVersion(false) -- false: Load the Unverified script
+                   -- true:  Load the Verified, protection guaranteed script
