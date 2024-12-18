@@ -61,7 +61,7 @@ local function loadVersion(verified: boolean)
             return loadstring(game:HttpGet("https://cdn.luarmor.net/verified/Starry.lua"))()
         end
         
-        loadstring(game:HttpGet(`api.luarmor.net/files/v3/loaders/{unverified}.lua`))()
+        loadstring(game:HttpGet(`https://api.luarmor.net/files/v3/loaders/{unverified}.lua`))()
     end)
 
     task.wait(0.5)
