@@ -27,9 +27,9 @@
 
     <-------------------->
 
-    To load the Stable, and bug-free edition of Starry,
+    To load the Verified, and bug-free edition of Starry,
     
-    change it to `loadVersion(1)`.
+    change it to `loadVersion(true)`.
 
 ]]
 
